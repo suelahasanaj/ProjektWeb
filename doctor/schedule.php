@@ -40,10 +40,10 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from doctor where docemail='$useremail'");
+    $userrow = $database->query("select * from doctor where doctor_email='$useremail'");
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["docid"];
-    $username=$userfetch["docname"];
+    $userid= $userfetch["doctor_id"];
+    $username=$userfetch["doctor_name"];
  //echo $userid;
  ?>
  <div class="container">
@@ -115,12 +115,12 @@
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('Europe/Tirane');
 
                         $today = date('Y-m-d');
                         echo $today;
 
-                        $list110 = $database->query("select  * from  schedule where docid=$userid;");
+                        $list110 = $database->query("select  * from  schedule where doctor_id=$userid;");
 
                         ?>
                         </p>
@@ -174,7 +174,7 @@
                 
                 <?php
 
-                $sqlmain= "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid where doctor.docid=$userid ";
+                $sqlmain= "select schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,schedule.schedule_date,schedule.schedule_time,schedule.number_of_patients from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id where doctor.doctor_id=$userid ";
                     if($_POST){
                         //print_r($_POST);
                         $sqlpt1="";
@@ -246,30 +246,30 @@
                                 else{
                                 for ( $x=0; $x<$result->num_rows;$x++){
                                     $row=$result->fetch_assoc();
-                                    $scheduleid=$row["scheduleid"];
-                                    $title=$row["title"];
-                                    $docname=$row["docname"];
-                                    $scheduledate=$row["scheduledate"];
-                                    $scheduletime=$row["scheduletime"];
-                                    $nop=$row["nop"];
+                                    $schedule_id=$row["schedule_id"];
+                                    $title_of_schedule=$row["title_of_schedule"];
+                                    $doctor_name=$row["doctor_name"];
+                                    $schedule_date=$row["schedule_date"];
+                                    $schedule_time=$row["schedule_time"];
+                                    $number_of_patients=$row["number_of_patients"];
                                     echo '<tr>
                                         <td> &nbsp;'.
-                                        substr($title,0,30)
+                                        substr($title_of_schedule,0,30)
                                         .'</td>
                                         
                                         <td style="text-align:center;">
-                                            '.substr($scheduledate,0,10).' '.substr($scheduletime,0,5).'
+                                            '.substr($schedule_date,0,10).' '.substr($schedule_time,0,5).'
                                         </td>
                                         <td style="text-align:center;">
-                                            '.$nop.'
+                                            '.$number_of_patients.'
                                         </td>
 
                                         <td>
                                         <div style="display:flex;justify-content: center;">
                                         
-                                        <a href="?action=view&id='.$scheduleid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
+                                        <a href="?action=view&id='.$schedule_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
                                        &nbsp;&nbsp;&nbsp;
-                                       <a href="?action=drop&id='.$scheduleid.'&name='.$title.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel Session</font></button></a>
+                                       <a href="?action=drop&id='.$schedule_id.'&name='.$title_of_schedule.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel Session</font></button></a>
                                         </div>
                                         </td>
                                     </tr>';
@@ -319,20 +319,20 @@
             </div>
             '; 
         }elseif($action=='view'){
-            $sqlmain= "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where  schedule.scheduleid=$id";
+            $sqlmain= "select schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,schedule.schedule_date,schedule.schedule_time,schedule.number_of_patients from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id  where  schedule.schedule_id=$id";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $docname=$row["docname"];
-            $scheduleid=$row["scheduleid"];
-            $title=$row["title"];
-            $scheduledate=$row["scheduledate"];
-            $scheduletime=$row["scheduletime"];
+            $doctor_name=$row["doctor_name"];
+            $schedule_id=$row["schedule_id"];
+            $title_of_schedule=$row["title_of_schedule"];
+            $schedule_date=$row["schedule_date"];
+            $schedule_time=$row["schedule_time"];
             
            
-            $nop=$row['nop'];
+            $number_of_patients=$row['number_of_patients'];
 
 
-            $sqlmain12= "select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.scheduleid=$id;";
+            $sqlmain12= "select * from appointment inner join patient on patient.patient_id=appointment.pacient_id inner join schedule on schedule.schedule_id=appointment.schedule_id where schedule.schedule_id=$id;";
             $result12= $database->query($sqlmain12);
             echo '
             <div id="popup1" class="overlay">
@@ -361,7 +361,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    '.$title.'<br><br>
+                                    '.$title_of_schedule.'<br><br>
                                 </td>
                                 
                             </tr>
@@ -372,7 +372,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                '.$docname.'<br><br>
+                                '.$doctor_name.'<br><br>
                                 </td>
                             </tr>
                             <tr>
@@ -382,7 +382,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                '.$scheduledate.'<br><br>
+                                '.$schedule_date.'<br><br>
                                 </td>
                             </tr>
                             <tr>
@@ -392,7 +392,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                '.$scheduletime.'<br><br>
+                                '.$schedule_time.'<br><br>
                                 </td>
                             </tr>
                             <tr>
@@ -455,10 +455,10 @@
                                          else{
                                          for ( $x=0; $x<$result->num_rows;$x++){
                                              $row=$result->fetch_assoc();
-                                             $apponum=$row["apponum"];
-                                             $pid=$row["pid"];
-                                             $pname=$row["pname"];
-                                             $ptel=$row["ptel"];
+                                             $appointment_number=$row["appointment_number"];
+                                             $patient_id=$row["patient_id"];
+                                             $patient_name=$row["patient_name"];
+                                             $patient_phonenumber=$row["patient_phonenumber"];
                                              
                                              echo '<tr style="text-align:center;">
                                                 <td>
@@ -469,7 +469,7 @@
                                                  substr($pname,0,25)
                                                  .'</td >
                                                  <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                                 '.$apponum.'
+                                                 '.$appointment_number.'
                                                  
                                                  </td>
                                                  <td>

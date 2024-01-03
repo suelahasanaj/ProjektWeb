@@ -29,8 +29,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -47,10 +45,10 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from doctor where docemail='$useremail'");
+    $userrow = $database->query("select * from doctor where doctor_email='$useremail'");
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["docid"];
-    $username=$userfetch["docname"];
+    $userid= $userfetch["doctor_id"];
+    $username=$userfetch["doctor_name"];
 
 
     //echo $userid;
@@ -127,7 +125,7 @@
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
-                                date_default_timezone_set('Asia/Kolkata');
+                                date_default_timezone_set('Europe/Tirane');
         
                                 $today = date('Y-m-d');
                                 echo $today;
@@ -135,8 +133,8 @@
 
                                 $patientrow = $database->query("select  * from  patient;");
                                 $doctorrow = $database->query("select  * from  doctor;");
-                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+                                $appointmentrow = $database->query("select  * from  appointment where appointment_date>='$today';");
+                                $schedulerow = $database->query("select  * from  schedule where schedule_date='$today';");
 
 
                                 ?>
@@ -250,13 +248,6 @@
                                         </table>
                                     </center>
 
-
-
-
-
-
-
-
                                 </td>
                                 <td>
 
@@ -291,7 +282,7 @@
                                         
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
-                                            $sqlmain= "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today' and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc"; 
+                                            $sqlmain= "select schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,schedule.schedule_date,schedule.schedule_time,schedule.number_of_patients from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id  where schedule.schedule_date>='$today' and schedule.schedule_date<='$nextweek' order by schedule.schedule_date desc"; 
                                                 $result= $database->query($sqlmain);
                 
                                                 if($result->num_rows==0){
@@ -314,21 +305,21 @@
                                                 else{
                                                 for ( $x=0; $x<$result->num_rows;$x++){
                                                     $row=$result->fetch_assoc();
-                                                    $scheduleid=$row["scheduleid"];
-                                                    $title=$row["title"];
-                                                    $docname=$row["docname"];
-                                                    $scheduledate=$row["scheduledate"];
-                                                    $scheduletime=$row["scheduletime"];
-                                                    $nop=$row["nop"];
+                                                    $schedule_id=$row["schedule_id"];
+                                                    $title_of_schedule=$row["title_of_schedule"];
+                                                    $doctor_name=$row["doctor_name"];
+                                                    $schedule_date=$row["schedule_date"];
+                                                    $schedule_time=$row["schedule_time"];
+                                                    $number_of_patients=$row["number_of_patients"];
                                                     echo '<tr>
                                                         <td style="padding:20px;"> &nbsp;'.
-                                                        substr($title,0,30)
+                                                        substr($title_of_schedule,0,30)
                                                         .'</td>
                                                         <td style="padding:20px;font-size:13px;">
-                                                        '.substr($scheduledate,0,10).'
+                                                        '.substr($schedule_date,0,10).'
                                                         </td>
                                                         <td style="text-align:center;">
-                                                            '.substr($scheduletime,0,5).'
+                                                            '.substr($schedule_time,0,5).'
                                                         </td>
 
                 

@@ -46,10 +46,10 @@
 
     //import database
     include("../connection.php");
-    $userrow = $database->query("select * from doctor where docemail='$useremail'");
+    $userrow = $database->query("select * from doctor where doctor_email='$useremail'");
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["docid"];
-    $username=$userfetch["docname"];
+    $userid= $userfetch["doctor_id"];
+    $username=$userfetch["doctor_name"];
 
 
     //echo $userid;
@@ -127,7 +127,7 @@
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
-                                date_default_timezone_set('Asia/Kolkata');
+                                date_default_timezone_set('Europe/Tirane');
         
                                 $today = date('Y-m-d');
                                 echo $today;
@@ -135,8 +135,8 @@
 
                                 $patientrow = $database->query("select  * from  patient;");
                                 $doctorrow = $database->query("select  * from  doctor;");
-                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+                                $appointmentrow = $database->query("select  * from  appointment where appointment_date>='$today';");
+                                $schedulerow = $database->query("select  * from  schedule where schedule_date='$today';");
 
 
                                 ?>
@@ -264,18 +264,18 @@
             </div>
             ';
         }elseif($action=='view'){
-            $sqlmain= "select * from doctor where docid='$id'";
+            $sqlmain= "select * from doctor where doctor_id='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $name=$row["docname"];
-            $email=$row["docemail"];
-            $spe=$row["specialties"];
+            $name=$row["doctor_name"];
+            $email=$row["doctor_email"];
+            $spe=$row["speciality"];
             
-            $spcil_res= $database->query("select sname from specialties where id='$spe'");
+            $spcil_res= $database->query("select sname from speciality where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
-            $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
-            $tele=$row['doctel'];
+            $spcil_name=$spcil_array["specialty_name"];
+            $nic=$row['doctor_nic'];
+            $tele=$row['doctor_phonenumber'];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
@@ -366,18 +366,18 @@
             </div>
             ';
         }elseif($action=='edit'){
-            $sqlmain= "select * from doctor where docid='$id'";
+            $sqlmain= "select * from doctor where doctor_id='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $name=$row["docname"];
-            $email=$row["docemail"];
-            $spe=$row["specialties"];
+            $name=$row["doctor_name"];
+            $email=$row["doctor_email"];
+            $spe=$row["speciality"];
             
-            $spcil_res= $database->query("select sname from specialties where id='$spe'");
+            $spcil_res= $database->query("select sname from speciality where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
-            $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
-            $tele=$row['doctel'];
+            $spcil_name=$spcil_array["specialty_name"];
+            $nic=$row['doctor_nic'];
+            $tele=$row['doctor_phonenumber'];
 
             $error_1=$_GET["error"];
                 $errorlist= array(
@@ -467,11 +467,11 @@
                                             <select name="spec" id="" class="box">';
                                                 
                 
-                                                $list11 = $database->query("select  * from  specialties;");
+                                                $list11 = $database->query("select  * from  speciality;");
                 
                                                 for ($y=0;$y<$list11->num_rows;$y++){
                                                     $row00=$list11->fetch_assoc();
-                                                    $sn=$row00["sname"];
+                                                    $sn=$row00["specialty_name"];
                                                     $id00=$row00["id"];
                                                     echo "<option value=".$id00.">$sn</option><br/>";
                                                 };

@@ -21,7 +21,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
 
     session_start();
 
@@ -40,10 +39,10 @@
 
        //import database
        include("../connection.php");
-       $userrow = $database->query("select * from doctor where docemail='$useremail'");
+       $userrow = $database->query("select * from doctor where doctor_email='$useremail'");
        $userfetch=$userrow->fetch_assoc();
-       $userid= $userfetch["docid"];
-       $username=$userfetch["docname"];
+       $userid= $userfetch["doctor_id"];
+       $username=$userfetch["doctor_name"];
     //echo $userid;
     ?>
     <div class="container">
@@ -115,12 +114,12 @@
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('Europe/Tirane');
 
                         $today = date('Y-m-d');
                         echo $today;
 
-                        $list110 = $database->query("select * from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  doctor.docid=$userid ");
+                        $list110 = $database->query("select * from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  where  doctor.doctor_id=$userid ");
 
                         ?>
                         </p>
@@ -182,7 +181,7 @@
                 <?php
 
 
-                    $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  doctor.docid=$userid ";
+                    $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  where  doctor.doctor_id=$userid ";
 
                     if($_POST){
                         //print_r($_POST);
@@ -192,7 +191,7 @@
                         
                         if(!empty($_POST["sheduledate"])){
                             $sheduledate=$_POST["sheduledate"];
-                            $sqlmain.=" and schedule.scheduledate='$sheduledate' ";
+                            $sqlmain.=" and schedule.schedule_date='$sheduledate' ";
                         };
 
                         
@@ -272,41 +271,41 @@
                                 else{
                                 for ( $x=0; $x<$result->num_rows;$x++){
                                     $row=$result->fetch_assoc();
-                                    $appoid=$row["appoid"];
-                                    $scheduleid=$row["scheduleid"];
-                                    $title=$row["title"];
-                                    $docname=$row["docname"];
-                                    $scheduledate=$row["scheduledate"];
-                                    $scheduletime=$row["scheduletime"];
-                                    $pname=$row["pname"];
-                                    $apponum=$row["apponum"];
-                                    $appodate=$row["appodate"];
+                                    $appointment_id=$row["appointment_id"];
+                                    $schedule_id=$row["schedule_id"];
+                                    $title_of_schedule=$row["title_of_schedule"];
+                                    $doctor_name=$row["doctor_name"];
+                                    $schedule_date=$row["schedule_date"];
+                                    $schedule_time=$row["schedule_time"];
+                                    $patient_name=$row["patient_name"];
+                                    $appointment_number=$row["appointment_number"];
+                                    $appointment_date=$row["appointment_date"];
                                     echo '<tr >
                                         <td style="font-weight:600;"> &nbsp;'.
                                         
-                                        substr($pname,0,25)
+                                        substr($patient_name,0,25)
                                         .'</td >
                                         <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                        '.$apponum.'
+                                        '.$appointment_number.'
                                         
                                         </td>
                                         <td>
-                                        '.substr($title,0,15).'
+                                        '.substr($title_of_schedule,0,15).'
                                         </td>
                                         <td style="text-align:center;;">
-                                            '.substr($scheduledate,0,10).' @'.substr($scheduletime,0,5).'
+                                            '.substr($schedule_date,0,10).' @'.substr($schedule_time,0,5).'
                                         </td>
                                         
                                         <td style="text-align:center;">
-                                            '.$appodate.'
+                                            '.$appointment_date.'
                                         </td>
 
                                         <td>
                                         <div style="display:flex;justify-content: center;">
                                         
-                                        <!--<a href="?action=view&id='.$appoid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
+                                        <!--<a href="?action=view&id='.$appointment_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
                                        &nbsp;&nbsp;&nbsp;-->
-                                       <a href="?action=drop&id='.$appoid.'&name='.$pname.'&session='.$title.'&apponum='.$apponum.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel</font></button></a>
+                                       <a href="?action=drop&id='.$appointment_id.'&name='.$patient_name.'&session='.$title_of_schedule.'&apponum='.$appointment_number.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel</font></button></a>
                                        &nbsp;&nbsp;&nbsp;</div>
                                         </td>
                                     </tr>';
@@ -385,8 +384,8 @@
         
                                         for ($y=0;$y<$list11->num_rows;$y++){
                                             $row00=$list11->fetch_assoc();
-                                            $sn=$row00["docname"];
-                                            $id00=$row00["docid"];
+                                            $sn=$row00["doctor_name"];
+                                            $id00=$row00["doctor_id"];
                                             echo "<option value=".$id00.">$sn</option><br/>";
                                         };
         
@@ -494,18 +493,18 @@
             </div>
             '; 
         }elseif($action=='view'){
-            $sqlmain= "select * from doctor where docid='$id'";
+            $sqlmain= "select * from doctor where doctor_id='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $name=$row["docname"];
-            $email=$row["docemail"];
-            $spe=$row["specialties"];
+            $name=$row["doctor_name"];
+            $email=$row["doctor_email"];
+            $spe=$row["speciality"];
             
-            $spcil_res= $database->query("select sname from specialties where id='$spe'");
+            $spcil_res= $database->query("select speciality_name from speciality where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
-            $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
-            $tele=$row['doctel'];
+            $spcil_name=$spcil_array["specialty_name"];
+            $nic=$row['doctor_nic'];
+            $tele=$row['doctor_phonenumber'];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">

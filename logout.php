@@ -10,7 +10,7 @@
 
 	session_destroy();
 
-	// redirecting the user to the login page
+	// ridrejtimi i perdoruesit ne faqen e hyrjes
 	header('Location: login.php?action=logout');
 
  ?>

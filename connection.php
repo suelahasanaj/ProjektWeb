@@ -1,22 +1,17 @@
 <?php
 
-// Database connection parameters
-$host = "localhost";
-$username = "root";
-$password = "Suela2003!";
-$database = "doktorionline";
+// Parametrat e lidhjes se databazes
+$db_host = "localhost";
+$db_username = "root";
+$db_password = "";
+$db_name = "doktorionline";
 
-// Create a connection
-$databaseConnection = new mysqli($host, $username, $password, $database);
+// Krijoj lidhjen
+$database = new mysqli($db_host, $db_username, $db_password, $db_name);
 
-// Check the connection
-if ($databaseConnection->connect_error) {
-    die("Connection failed: " . $databaseConnection->connect_error);
+// Kontrolloj lidhjen
+if ($database->connect_error) {
+    die("Connection failed: " . $database->connect_error);
 }
-
-// Your code goes here
-
-// Close the connection when done
-$databaseConnection->close();
 
 ?>

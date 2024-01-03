@@ -109,12 +109,12 @@
                             
                             <?php
                                 echo '<datalist id="doctors">';
-                                $list11 = $database->query("select  docname,docemail from  doctor;");
+                                $list11 = $database->query("select  doctor_name,doctor_email from  doctor;");
 
                                 for ($y=0;$y<$list11->num_rows;$y++){
                                     $row00=$list11->fetch_assoc();
-                                    $d=$row00["docname"];
-                                    $c=$row00["docemail"];
+                                    $d=$row00["doctor_name"];
+                                    $c=$row00["doctor_email"];
                                     echo "<option value='$d'><br/>";
                                     echo "<option value='$c'><br/>";
                                 };
@@ -134,7 +134,7 @@
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('Europe/Tirane');
 
                         $date = date('Y-m-d');
                         echo $date;
@@ -166,9 +166,9 @@
                     if($_POST){
                         $keyword=$_POST["search"];
                         
-                        $sqlmain= "select * from doctor where docemail='$keyword' or docname='$keyword' or docname like '$keyword%' or docname like '%$keyword' or docname like '%$keyword%'";
+                        $sqlmain= "select * from doctor where doctor_email='$keyword' or doctor_name='$keyword' or doctor_name like '$keyword%' or doctor_name like '%$keyword' or doctor_name like '%$keyword%'";
                     }else{
-                        $sqlmain= "select * from doctor order by docid desc";
+                        $sqlmain= "select * from doctor order by docto_id desc";
 
                     }
 
@@ -193,14 +193,10 @@
                                     Email
                                 </th>
                                 <th class="table-headin">
-                                    
-                                    Specialties
-                                    
+                                    Specialties  
                                 </th>
                                 <th class="table-headin">
-                                    
                                     Events
-                                    
                                 </tr>
                         </thead>
                         <tbody>
@@ -230,13 +226,13 @@
                                 else{
                                 for ( $x=0; $x<$result->num_rows;$x++){
                                     $row=$result->fetch_assoc();
-                                    $docid=$row["docid"];
-                                    $name=$row["docname"];
-                                    $email=$row["docemail"];
-                                    $spe=$row["specialties"];
-                                    $spcil_res= $database->query("select sname from specialties where id='$spe'");
+                                    $doctor_id=$row["doctor_id"];
+                                    $name=$row["doctor_name"];
+                                    $email=$row["doctor_email"];
+                                    $spe=$row["speciality"];
+                                    $spcil_res= $database->query("select sname from speciality where id='$spe'");
                                     $spcil_array= $spcil_res->fetch_assoc();
-                                    $spcil_name=$spcil_array["sname"];
+                                    $spcil_name=$spcil_array["specialty_name"];
                                     echo '<tr>
                                         <td> &nbsp;'.
                                         substr($name,0,30)
@@ -250,11 +246,11 @@
 
                                         <td>
                                         <div style="display:flex;justify-content: center;">
-                                        <a href="?action=edit&id='.$docid.'&error=0" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-edit"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Edit</font></button></a>
+                                        <a href="?action=edit&id='.$doctor_id.'&error=0" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-edit"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Edit</font></button></a>
                                         &nbsp;&nbsp;&nbsp;
-                                        <a href="?action=view&id='.$docid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
+                                        <a href="?action=view&id='.$doctor_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
                                        &nbsp;&nbsp;&nbsp;
-                                       <a href="?action=drop&id='.$docid.'&name='.$name.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Remove</font></button></a>
+                                       <a href="?action=drop&id='.$doctor_id.'&name='.$name.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Remove</font></button></a>
                                         </div>
                                         </td>
                                     </tr>';
@@ -304,18 +300,18 @@
             </div>
             ';
         }elseif($action=='view'){
-            $sqlmain= "select * from doctor where docid='$id'";
+            $sqlmain= "select * from doctor where doctor_id='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $name=$row["docname"];
-            $email=$row["docemail"];
-            $spe=$row["specialties"];
+            $name=$row["doctor_name"];
+            $email=$row["doctor_email"];
+            $spe=$row["speciality"];
             
-            $spcil_res= $database->query("select sname from specialties where id='$spe'");
+            $spcil_res= $database->query("select sname from speciality where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
-            $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
-            $tele=$row['doctel'];
+            $spcil_name=$spcil_array["specialty_name"];
+            $nic=$row['doctor_nic'];
+            $tele=$row['doctor_phonenumber'];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
@@ -489,11 +485,11 @@
                                     <select name="spec" id="" class="box" >';
                                         
         
-                                        $list11 = $database->query("select  * from  specialties;");
+                                        $list11 = $database->query("select  * from  speciality;");
         
                                         for ($y=0;$y<$list11->num_rows;$y++){
                                             $row00=$list11->fetch_assoc();
-                                            $sn=$row00["sname"];
+                                            $sn=$row00["specialty_name"];
                                             $id00=$row00["id"];
                                             echo "<option value=".$id00.">$sn</option><br/>";
                                         };
@@ -501,7 +497,8 @@
         
         
                                         
-                        echo     '       </select><br>
+                        echo     '    
+                           </select><br>
                                 </td>
                             </tr>
                             <tr>
@@ -569,18 +566,18 @@
         ';
             }
         }elseif($action=='edit'){
-            $sqlmain= "select * from doctor where docid='$id'";
+            $sqlmain= "select * from doctor where doctor_id='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $name=$row["docname"];
-            $email=$row["docemail"];
-            $spe=$row["specialties"];
+            $name=$row["doctor_name"];
+            $email=$row["doctor_email"];
+            $spe=$row["speciality"];
             
-            $spcil_res= $database->query("select sname from specialties where id='$spe'");
+            $spcil_res= $database->query("select sname from speciality where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
-            $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
-            $tele=$row['doctel'];
+            $spcil_name=$spcil_array["specialty_name"];
+            $nic=$row['doctor_nic'];
+            $tele=$row['doctor_phonenumber'];
 
             $error_1=$_GET["error"];
                 $errorlist= array(
@@ -669,11 +666,11 @@
                                             <select name="spec" id="" class="box">';
                                                 
                 
-                                                $list11 = $database->query("select  * from  specialties;");
+                                                $list11 = $database->query("select  * from  speciality;");
                 
                                                 for ($y=0;$y<$list11->num_rows;$y++){
                                                     $row00=$list11->fetch_assoc();
-                                                    $sn=$row00["sname"];
+                                                    $sn=$row00["specialty_name"];
                                                     $id00=$row00["id"];
                                                     echo "<option value=".$id00.">$sn</option><br/>";
                                                 };

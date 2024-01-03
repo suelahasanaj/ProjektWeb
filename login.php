@@ -83,7 +83,7 @@
 
             }elseif($utype=='d'){
                 //TODO
-                $checker = $database->query("select * from doctor where docemail='$email' and docpassword='$password'");
+                $checker = $database->query("select * from doctor where doctor_email='$email' and doctor_password='$password'");
                 if ($checker->num_rows==1){
 
 
