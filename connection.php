@@ -4,7 +4,7 @@
 $host = "localhost";
 $username = "root";
 $password = "Suela2003!";
-$database = "edoc";
+$database = "doktorionline";
 
 // Create a connection
 $databaseConnection = new mysqli($host, $username, $password, $database);
