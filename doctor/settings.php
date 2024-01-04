@@ -269,9 +269,9 @@
             $row=$result->fetch_assoc();
             $name=$row["doctor_name"];
             $email=$row["doctor_email"];
-            $spe=$row["speciality"];
+            $spe=$row["specialty"];
             
-            $spcil_res= $database->query("select sname from speciality where id='$spe'");
+            $spcil_res= $database->query("select specialty_name from specialties where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
             $spcil_name=$spcil_array["specialty_name"];
             $nic=$row['doctor_nic'];
@@ -371,9 +371,9 @@
             $row=$result->fetch_assoc();
             $name=$row["doctor_name"];
             $email=$row["doctor_email"];
-            $spe=$row["speciality"];
+            $spe=$row["specialty"];
             
-            $spcil_res= $database->query("select sname from speciality where id='$spe'");
+            $spcil_res= $database->query("select specialty_name from specialties where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
             $spcil_name=$spcil_array["specialty_name"];
             $nic=$row['doctor_nic'];
@@ -467,7 +467,7 @@
                                             <select name="spec" id="" class="box">';
                                                 
                 
-                                                $list11 = $database->query("select  * from  speciality;");
+                                                $list11 = $database->query("select  * from  specialty;");
                 
                                                 for ($y=0;$y<$list11->num_rows;$y++){
                                                     $row00=$list11->fetch_assoc();

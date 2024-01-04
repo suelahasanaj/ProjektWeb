@@ -462,18 +462,18 @@
                                              
                                              echo '<tr style="text-align:center;">
                                                 <td>
-                                                '.substr($pid,0,15).'
+                                                '.substr($patient_id,0,15).'
                                                 </td>
                                                  <td style="font-weight:600;padding:25px">'.
                                                  
-                                                 substr($pname,0,25)
+                                                 substr($patient_name,0,25)
                                                  .'</td >
                                                  <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
                                                  '.$appointment_number.'
                                                  
                                                  </td>
                                                  <td>
-                                                 '.substr($ptel,0,25).'
+                                                 '.substr($patient_phonenumber,0,25).'
                                                  </td>
                                                  
                                                  
