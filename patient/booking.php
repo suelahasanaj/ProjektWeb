@@ -21,8 +21,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -37,7 +35,6 @@
     }
     
 
-    //import database
     include("../connection.php");
 
     $sqlmain= "select * from patient where pemail=?";
@@ -49,18 +46,11 @@
     $userid= $userfetch["pid"];
     $username=$userfetch["pname"];
 
-
-    //echo $userid;
-    //echo $username;
-    
-
-
-    date_default_timezone_set('Asia/Kolkata');
+    date_default_timezone_set('Europe/Tirane');
 
     $today = date('Y-m-d');
 
 
- //echo $userid;
  ?>
  <div class="container">
      <div class="menu">
@@ -79,7 +69,7 @@
                          </tr>
                          <tr>
                              <td colspan="2">
-                                 <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                 <a href="../logout.php" ><input type="button" value="Dil nga llogaria" class="logout-btn btn-primary-soft btn"></a>
                              </td>
                          </tr>
                  </table>
@@ -87,28 +77,28 @@
              </tr>
              <tr class="menu-row" >
                     <td class="menu-btn menu-icon-home " >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Home</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Kreu</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor">
-                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">All Doctors</p></a></div>
+                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">Lista e Doktorëve</p></a></div>
                     </td>
                 </tr>
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session menu-active menu-icon-session-active">
-                        <a href="schedule.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Seancat e Skeduluara</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Konsultat e mia</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Rregullime</p></a></div>
                     </td>
                 </tr>
                 
@@ -119,7 +109,7 @@
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
                     <td width="13%" >
-                    <a href="schedule.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    <a href="schedule.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Kthehu</font></button></a>
                     </td>
                     <td >
                             <form action="schedule.php" method="post" class="header-search">
@@ -130,10 +120,7 @@
                                             echo '<datalist id="doctors">';
                                             $list11 = $database->query("select DISTINCT * from  doctor;");
                                             $list12 = $database->query("select DISTINCT * from  schedule GROUP BY title;");
-                                            
-
-                                            
-
+                                        
 
                                             for ($y=0;$y<$list11->num_rows;$y++){
                                                 $row00=$list11->fetch_assoc();
@@ -155,7 +142,7 @@
             ?>
                                         
                                 
-                                        <input type="Submit" value="Search" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                                        <input type="Submit" value="Kërko" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                                         </form>
                     </td>
                     <td width="15%">
@@ -164,11 +151,8 @@
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
-
                                 
-                                echo $today;
-
-                                
+                                echo $today;    
 
                         ?>
                         </p>
@@ -214,7 +198,6 @@
                                     $stmt->bind_param("i", $id);
                                     $stmt->execute();
                                     $result = $stmt->get_result();
-                                    //echo $sqlmain;
                                     $row=$result->fetch_assoc();
                                     $scheduleid=$row["scheduleid"];
                                     $title=$row["title"];
@@ -223,7 +206,7 @@
                                     $scheduledate=$row["scheduledate"];
                                     $scheduletime=$row["scheduletime"];
                                     $sql2="select * from appointment where scheduleid=$id";
-                                    //echo $sql2;
+                               
                                      $result12= $database->query($sql2);
                                      $apponum=($result12->num_rows)+1;
                                     
@@ -291,7 +274,7 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                <input type="Submit" class="login-btn btn-primary btn btn-book" style="margin-left:10px;padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;width:95%;text-align: center;" value="Book now" name="booknow"></button>
+                                                <input type="Submit" class="login-btn btn-primary btn btn-book" style="margin-left:10px;padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;width:95%;text-align: center;" value="Cakto konsultën tani" name="booknow"></button>
                                             </form>
                                             </td>
                                         </tr>

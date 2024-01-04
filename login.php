@@ -8,34 +8,24 @@
     <link rel="stylesheet" href="css/main.css">  
     <link rel="stylesheet" href="css/login.css">
         
-    <title>Login</title>
+    <title>Hyr në llogari:</title>
 
-    
-    
 </head>
 <body>
     <?php
-
-    //learn from w3schools.com
-    //Unset all the server side variables
 
     session_start();
 
     $_SESSION["user"]="";
     $_SESSION["usertype"]="";
     
-    // Set the new timezone
-    date_default_timezone_set('Asia/Kolkata');
+
+    date_default_timezone_set('Europe/Tirane');
     $date = date('Y-m-d');
 
     $_SESSION["date"]=$date;
     
-
-    //import database
     include("connection.php");
-
-    
-
 
 
     if($_POST){
@@ -49,28 +39,25 @@
         if($result->num_rows==1){
             $utype=$result->fetch_assoc()['usertype'];
             if ($utype=='p'){
-                //TODO
+                
                 $checker = $database->query("select * from patient where pemail='$email' and ppassword='$password'");
                 if ($checker->num_rows==1){
 
 
-                    //   Patient dashbord
                     $_SESSION['user']=$email;
                     $_SESSION['usertype']='p';
                     
                     header('location: patient/index.php');
 
                 }else{
-                    $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Wrong credentials: Invalid email or password</label>';
+                    $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Të dhënat e gabuara: Email-i ose fjalëkalimi nuk përputhet!</label>';
                 }
 
             }elseif($utype=='a'){
-                //TODO
+               
                 $checker = $database->query("select * from admin where aemail='$email' and apassword='$password'");
                 if ($checker->num_rows==1){
 
-
-                    //   Admin dashbord
                     $_SESSION['user']=$email;
                     $_SESSION['usertype']='a';
                     
@@ -82,12 +69,11 @@
 
 
             }elseif($utype=='d'){
-                //TODO
+                
                 $checker = $database->query("select * from doctor where doctor_email='$email' and doctor_password='$password'");
                 if ($checker->num_rows==1){
 
 
-                    //   doctor dashbord
                     $_SESSION['user']=$email;
                     $_SESSION['usertype']='d';
                     header('location: doctor/index.php');
@@ -123,35 +109,35 @@
         <table border="0" style="margin: 0;padding: 0;width: 60%;">
             <tr>
                 <td>
-                    <p class="header-text">Welcome Back!</p>
+                    <p class="header-text">Mirëseerdhët sërish!</p>
                 </td>
             </tr>
         <div class="form-body">
             <tr>
                 <td>
-                    <p class="sub-text">Login with your details to continue</p>
+                    <p class="sub-text">Logohu me detajet e tua për të vazhduar.</p>
                 </td>
             </tr>
-            <tr>
+            <tr>Login
                 <form action="" method="POST" >
                 <td class="label-td">
-                    <label for="useremail" class="form-label">Email: </label>
+                    <label for="useremail" class="form-label">Email-i: </label>
                 </td>
             </tr>
             <tr>
                 <td class="label-td">
-                    <input type="email" name="useremail" class="input-text" placeholder="Email Address" required>
+                    <input type="email" name="useremail" class="input-text" placeholder="Adresa e Email-it" required>
                 </td>
             </tr>
             <tr>
                 <td class="label-td">
-                    <label for="userpassword" class="form-label">Password: </label>
+                    <label for="userpassword" class="form-label">Fjalëkalimi: </label>
                 </td>
             </tr>
 
             <tr>
                 <td class="label-td">
-                    <input type="Password" name="userpassword" class="input-text" placeholder="Password" required>
+                    <input type="Password" name="userpassword" class="input-text" placeholder="Vendos Fjalëkalimin" required>
                 </td>
             </tr>
 
@@ -164,15 +150,15 @@
 
             <tr>
                 <td>
-                    <input type="submit" value="Login" class="login-btn btn-primary btn">
+                    <input type="submit" value="Hyr" class="login-btn btn-primary btn">
                 </td>
             </tr>
         </div>
             <tr>
                 <td>
                     <br>
-                    <label for="" class="sub-text" style="font-weight: 280;">Don't have an account&#63; </label>
-                    <a href="signup.php" class="hover-link1 non-style-link">Sign Up</a>
+                    <label for="" class="sub-text" style="font-weight: 280;">Nuk ke një llogari&#63; </label>
+                    <a href="signup.php" class="hover-link1 non-style-link">Regjistrohu.</a>
                     <br><br><br>
                 </td>
             </tr>

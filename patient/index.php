@@ -26,7 +26,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
 
     session_start();
 
@@ -42,7 +41,6 @@
     }
     
 
-    //import database
     include("../connection.php");
 
     $sqlmain= "select * from patient where patient_email=?";
@@ -55,10 +53,6 @@
     $userid= $userfetch["patient_id"];
     $username=$userfetch["patient_name"];
 
-
-    //echo $userid;
-    //echo $username;
-    
     ?>
     <div class="container">
         <div class="menu">
@@ -77,7 +71,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                    <a href="../logout.php" ><input type="button" value="Dil" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -85,28 +79,28 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-home menu-active menu-icon-home-active" >
-                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Home</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Kreu</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor">
-                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">All Doctors</p></a></div>
+                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">Lista e Doktorëve</p></a></div>
                     </td>
                 </tr>
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Seancat e Skeduluara</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Bookings</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Konsultat e Mia</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Rregullime</p></a></div>
                     </td>
                 </tr>
                 
@@ -118,7 +112,7 @@
                         <tr >
                             
                             <td colspan="1" class="nav-bar" >
-                            <p style="font-size: 23px;padding-left:12px;font-weight: 600;margin-left:20px;">Home</p>
+                            <p style="font-size: 23px;padding-left:12px;font-weight: 600;margin-left:20px;">Kreu</p>
                           
                             </td>
                             <td width="25%">
@@ -130,7 +124,7 @@
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
-                                date_default_timezone_set('Asia/Kolkata');
+                                date_default_timezone_set('Europe/Tirane');
         
                                 $today = date('Y-m-d');
                                 echo $today;
@@ -158,18 +152,18 @@
                     <table class="filter-container doctor-header patient-header" style="border: none;width:95%" border="0" >
                     <tr>
                         <td >
-                            <h3>Welcome!</h3>
+                            <h3>Mirëseerdhe!</h3>
                             <h1><?php echo $username  ?>.</h1>
-                            <p>Haven't any idea about doctors? no problem let's jumping to 
-                                <a href="doctors.php" class="non-style-link"><b>"All Doctors"</b></a> section or 
-                                <a href="schedule.php" class="non-style-link"><b>"Sessions"</b> </a><br>
-                                Track your past and future appointments history.<br>Also find out the expected arrival time of your doctor or medical consultant.<br><br>
+                            <p>Nuk i njeh doktorët? Pa problem, le të shikojmë seksionin
+                                <a href="doctors.php" class="non-style-link"><b>"Lista e Doktorëve"</b></a> ose 
+                                <a href="schedule.php" class="non-style-link"><b>"Seancat"</b> </a><br>
+                                Ndiq konsultat e tua të kaluara dhe ato të ardhshme.<br>Zbulo gjithashtu kohën e mbërritjes së mjekut tënd.<br><br>
                             </p>
                             
-                            <h3>Channel a Doctor Here</h3>
+                            <h3>Drejtohu një Doktori</h3>
                             <form action="schedule.php" method="post" style="display: flex">
 
-                                <input type="search" name="search" class="input-text " placeholder="Search Doctor and We will Find The Session Available" list="doctors" style="width:45%;">&nbsp;&nbsp;
+                                <input type="search" name="search" class="input-text " placeholder="Kërko Doktorin dhe ne do të gjejmë seancat e lira." list="doctors" style="width:45%;">&nbsp;&nbsp;
                                 
                                 <?php
                                     echo '<datalist id="doctors">';
@@ -205,10 +199,7 @@
                             <tr>
                                 <td width="50%">
 
-                                    
-
-
-
+                         
 
                                     <center>
                                         <table class="filter-container" style="border: none;" border="0">
@@ -238,7 +229,7 @@
                                                                     <?php    echo $patientrow->num_rows  ?>
                                                                 </div><br>
                                                                 <div class="h3-dashboard">
-                                                                    All Patients &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    Gjithë Pacientët &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </div>
                                                         </div>
                                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
@@ -291,7 +282,7 @@
 
 
                             
-                                    <p style="font-size: 20px;font-weight:600;padding-left: 40px;" class="anime">Your Upcoming Booking</p>
+                                    <p style="font-size: 20px;font-weight:600;padding-left: 40px;" class="anime">Konsultat e Ardhshme</p>
                                     <center>
                                         <div class="abc scroll" style="height: 250px;padding: 0;margin: 0;">
                                         <table width="85%" class="sub-table scrolldown" border="0" >
@@ -300,14 +291,13 @@
                                         <tr>
                                         <th class="table-headin">
                                                     
-                                                
-                                                    Appoint. Number
-                                                    
+                                                Numri i Konsultës
+                            
                                                     </th>
                                                 <th class="table-headin">
                                                     
                                                 
-                                                Session Title
+                                                Titulli i Sesionit
                                                 
                                                 </th>
                                                 
@@ -316,7 +306,7 @@
                                                 </th>
                                                 <th class="table-headin">
                                                     
-                                                    Sheduled Date & Time
+                                                    Data & Ora e Skeduluar
                                                     
                                                 </th>
                                                     
@@ -339,7 +329,7 @@
                                                     
                                                     <br>
                                                     <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nothing to show here!</p>
-                                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Channel a Doctor &nbsp;</font></button>
+                                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Drejtohu një Doktori &nbsp;</font></button>
                                                     </a>
                                                     </center>
                                                     <br><br><br><br>
@@ -371,7 +361,6 @@
                                                             '.substr($scheduledate,0,10).' '.substr($scheduletime,0,5).'
                                                         </td>
 
-                
                                                        
                                                     </tr>';
                                                     

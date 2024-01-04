@@ -14,7 +14,6 @@
     }
     
 
-    //import database
     include("../connection.php");
     $sqlmain= "select * from patient where pemail=?";
     $stmt = $database->prepare($sqlmain);
@@ -27,7 +26,7 @@
 
     
     if($_GET){
-        //import database
+       
         include("../connection.php");
         $id=$_GET["id"];
         $sqlmain= "select * from patient where pid=?";
@@ -50,7 +49,7 @@
         $stmt->execute();
         $result = $stmt->get_result();
 
-        //print_r($email);
+       
         header("location: ../logout.php");
     }
 
