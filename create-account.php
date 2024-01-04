@@ -43,12 +43,12 @@ if($_POST){
 
     $result= $database->query("select * from webuser");
 
-    $fname=$_SESSION['personal']['fname'];
-    $lname=$_SESSION['personal']['lname'];
+    $fname=$_SESSION['personal']['first_name'];
+    $lname=$_SESSION['personal']['last_name'];
     $name=$fname." ".$lname;
     $address=$_SESSION['personal']['address'];
     $nic=$_SESSION['personal']['nic'];
-    $dob=$_SESSION['personal']['dob'];
+    $dob=$_SESSION['personal']['date_of_birth'];
     $email=$_POST['newemail'];
     $tele=$_POST['tele'];
     $newpassword=$_POST['newpassword'];
@@ -96,8 +96,8 @@ if($_POST){
         <table border="0" style="width: 69%;">
             <tr>
                 <td colspan="2">
-                    <p class="header-text">Let's Get Started</p>
-                    <p class="sub-text">It's Okey, Now Create User Account.</p>
+                    <p class="header-text">Le të fillojmë</p>
+                    <p class="sub-text">Krijo një llogari të re.</p>
                 </td>
             </tr>
             <tr>
@@ -114,7 +114,7 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <label for="tele" class="form-label">Mobile Number: </label>
+                    <label for="tele" class="form-label">Numri Telefonit: </label>
                 </td>
             </tr>
             <tr>
@@ -124,7 +124,7 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <label for="newpassword" class="form-label">Create New Password: </label>
+                    <label for="newpassword" class="form-label">Krijo një fjalëkalim të ri: </label>
                 </td>
             </tr>
             <tr>
@@ -134,7 +134,7 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <label for="cpassword" class="form-label">Conform Password: </label>
+                    <label for="cpassword" class="form-label">Konfirmo fjalëkalimin: </label>
                 </td>
             </tr>
             <tr>
@@ -153,18 +153,18 @@ if($_POST){
             
             <tr>
                 <td>
-                    <input type="reset" value="Reset" class="login-btn btn-primary-soft btn" >
+                    <input type="reset" value="Rivendos" class="login-btn btn-primary-soft btn" >
                 </td>
                 <td>
-                    <input type="submit" value="Sign Up" class="login-btn btn-primary btn">
+                    <input type="submit" value="Regjistrohu" class="login-btn btn-primary btn">
                 </td>
 
             </tr>
             <tr>
                 <td colspan="2">
                     <br>
-                    <label for="" class="sub-text" style="font-weight: 280;">Already have an account&#63; </label>
-                    <a href="login.php" class="hover-link1 non-style-link">Login</a>
+                    <label for="" class="sub-text" style="font-weight: 280;">Posedoni një llogari&#63; </label>
+                    <a href="login.php" class="hover-link1 non-style-link">Hyr</a>
                     <br><br><br>
                 </td>
             </tr>

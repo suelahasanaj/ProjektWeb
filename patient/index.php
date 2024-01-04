@@ -45,15 +45,15 @@
     //import database
     include("../connection.php");
 
-    $sqlmain= "select * from patient where pemail=?";
+    $sqlmain= "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
     $stmt->bind_param("s",$useremail);
     $stmt->execute();
     $userrow = $stmt->get_result();
     $userfetch=$userrow->fetch_assoc();
 
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+    $userid= $userfetch["patient_id"];
+    $username=$userfetch["patient_name"];
 
 
     //echo $userid;
