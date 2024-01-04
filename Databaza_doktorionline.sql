@@ -49,7 +49,12 @@ CREATE TABLE IF NOT EXISTS `doctor` (
 
 --Marrja e te dhenave per tabelen 'doctor'
 INSERT INTO `doctor` (`doctor_id`, `doctor_email`, `doctor_name`, `doctor_password`, `doctor_nic`, `doctor_phonenumber`, `specialty`) VALUES
-(1, 'doctor@gmail.com', 'Test Doctor', '2000!', '000000010', '+355683612000', 1);
+(1, 'doctor@gmail.com', 'Test Doctor', '2000!', '000000010', '+355683612000', 1),
+(2, 'fredtomson@gmail.com', 'Fred Tomson', 'Fred1980!', '000000011', '+355683612445', 7),
+(3, 'almirazeka@gmail.com', 'Almira Zeka', 'Almiraa123', '000000112', '+355685612010', 3),
+(4, 'mentorpetrela@gmail.com', 'Mentor Petrela', 'Mentormentor12', '000000013', '+355690325431', 11),
+(5, 'zamirshefqetndroqi@gmail.com', 'Zamir Shefqet Ndroqi', 'Zamir1979!', '000000114', '+355683612004', 5),
+(6, 'eglantinabega@gmail.com', 'Eglantina Bega', 'Eglantina1991?', '000000015', '+355683612510', 21);
 
 -- Krijimi i tabeles 'patient'
 DROP TABLE IF EXISTS `patient`;
