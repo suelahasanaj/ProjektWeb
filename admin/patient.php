@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Patients</title>
+    <title>Pacientë</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -20,13 +20,10 @@
 </head>
 <body>
     <?php
-
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='admin'){
             header("location: ../login.php");
         }
 
@@ -34,12 +31,7 @@
         header("location: ../login.php");
     }
     
-    
-
-    //import database
     include("../connection.php");
-
-    
     ?>
     <div class="container">
         <div class="menu">
@@ -53,12 +45,12 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-subtitle">admin@gmail.com</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                <a href="../logout.php" ><input type="button" value="Dil" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -71,22 +63,22 @@
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor ">
-                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Doctors</p></a></div>
+                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Doktorë</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-schedule">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Schedule</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Skedulim</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Appointment</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Takim</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-patient  menu-active menu-icon-patient-active">
-                        <a href="patient.php" class="non-style-link-menu  non-style-link-menu-active"><div><p class="menu-text">Patients</p></a></div>
+                        <a href="patient.php" class="non-style-link-menu  non-style-link-menu-active"><div><p class="menu-text">Pacientë</p></a></div>
                     </td>
                 </tr>
 
@@ -97,23 +89,23 @@
                 <tr >
                     <td width="13%">
 
-                    <a href="patient.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    <a href="patient.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Kthehu</font></button></a>
                         
                     </td>
                     <td>
                         
                         <form action="" method="post" class="header-search">
 
-                            <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Patient name or Email" list="patient">&nbsp;&nbsp;
+                            <input type="search" name="search" class="input-text header-searchbar" placeholder="Kërko pacientin me emër ose email" list="patient">&nbsp;&nbsp;
                             
                             <?php
                                 echo '<datalist id="patient">';
-                                $list11 = $database->query("select  pname,pemail from patient;");
+                                $list11 = $database->query("select  patient_name,patient_email from patient;");
 
                                 for ($y=0;$y<$list11->num_rows;$y++){
                                     $row00=$list11->fetch_assoc();
-                                    $d=$row00["pname"];
-                                    $c=$row00["pemail"];
+                                    $d=$row00["patient_name"];
+                                    $c=$row00["patient_email"];
                                     echo "<option value='$d'><br/>";
                                     echo "<option value='$c'><br/>";
                                 };
@@ -122,18 +114,18 @@
 ?>
                             
                        
-                            <input type="Submit" value="Search" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                            <input type="S" value="Dërgo" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                         
                         </form>
                         
                     </td>
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Today's Date
+                            Data e sotme
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('Europe/Tirane');
 
                         $date = date('Y-m-d');
                         echo $date;
@@ -150,7 +142,7 @@
                 
                 <tr>
                     <td colspan="4" style="padding-top:10px;">
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">All Patients (<?php echo $list11->num_rows; ?>)</p>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Të gjithë pacientët (<?php echo $list11->num_rows; ?>)</p>
                     </td>
                     
                 </tr>
@@ -158,9 +150,9 @@
                     if($_POST){
                         $keyword=$_POST["search"];
                         
-                        $sqlmain= "select * from patient where pemail='$keyword' or pname='$keyword' or pname like '$keyword%' or pname like '%$keyword' or pname like '%$keyword%' ";
+                        $sqlmain= "select * from patient where patient_email='$keyword' or patient_name='$keyword' or patient_name like '$keyword%' or patient_name like '%$keyword' or patient_name like '%$keyword%' ";
                     }else{
-                        $sqlmain= "select * from patient order by pid desc";
+                        $sqlmain= "select * from patient order by patient_id desc";
 
                     }
 
@@ -178,19 +170,19 @@
                                 <th class="table-headin">
                                     
                                 
-                                Name
+                                Emri
                                 
                                 </th>
                                 <th class="table-headin">
                                     
                                 
-                                    NIC
+                                    Numri I Identifikimit Personal(NIC)
                                     
                                 </th>
                                 <th class="table-headin">
                                 
                             
-                                Telephone
+                                Numri i telefonit
                                 
                                 </th>
                                 <th class="table-headin">
@@ -198,12 +190,12 @@
                                 </th>
                                 <th class="table-headin">
                                     
-                                    Date of Birth
+                                    Data e lindjes
                                     
                                 </th>
                                 <th class="table-headin">
                                     
-                                    Events
+                                    Evente
                                     
                                 </tr>
                         </thead>
@@ -222,8 +214,8 @@
                                     <img src="../img/notfound.svg" width="25%">
                                     
                                     <br>
-                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                    <a class="non-style-link" href="patient.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Patients &nbsp;</font></button>
+                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nuk gjetëm asgjë në lidhje me kërkimin tuaj!</p>
+                                    <a class="non-style-link" href="patient.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Shfaqi të gjithë pacientët &nbsp;</font></button>
                                     </a>
                                     </center>
                                     <br><br><br><br>
@@ -234,12 +226,12 @@
                                 else{
                                 for ( $x=0; $x<$result->num_rows;$x++){
                                     $row=$result->fetch_assoc();
-                                    $pid=$row["pid"];
-                                    $name=$row["pname"];
-                                    $email=$row["pemail"];
-                                    $nic=$row["pnic"];
-                                    $dob=$row["pdob"];
-                                    $tel=$row["ptel"];
+                                    $patient_id=$row["patient_id"];
+                                    $name=$row["patient_name"];
+                                    $email=$row["patient_email"];
+                                    $nic=$row["patient_nic"];
+                                    $dob=$row["patient_date_of_birth"];
+                                    $tel=$row["patient_phonenumber"];
                                     
                                     echo '<tr>
                                         <td> &nbsp;'.
@@ -260,7 +252,7 @@
                                         <td >
                                         <div style="display:flex;justify-content: center;">
                                         
-                                        <a href="?action=view&id='.$pid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
+                                        <a href="?action=view&id='.$patient_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Shiko</font></button></a>
                                        
                                         </div>
                                         </td>
@@ -289,15 +281,15 @@
         
         $id=$_GET["id"];
         $action=$_GET["action"];
-            $sqlmain= "select * from patient where pid='$id'";
+            $sqlmain= "select * from patient where patient_id='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $name=$row["pname"];
-            $email=$row["pemail"];
-            $nic=$row["pnic"];
-            $dob=$row["pdob"];
-            $tele=$row["ptel"];
-            $address=$row["paddress"];
+            $name=$row["patient_name"];
+            $email=$row["patient_email"];
+            $nic=$row["patient_nic"];
+            $dob=$row["patient_date_of_birth"];
+            $tele=$row["patient_phonenumber"];
+            $address=$row["patient_address"];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
@@ -311,13 +303,13 @@
                         
                             <tr>
                                 <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">View Details.</p><br><br>
+                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Shiko detajet.</p><br><br>
                                 </td>
                             </tr>
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Patient ID: </label>
+                                    <label for="name" class="form-label">ID e pacientit: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -330,7 +322,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Name: </label>
+                                    <label for="name" class="form-label">Emri: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -351,7 +343,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nic" class="form-label">NIC: </label>
+                                    <label for="nic" class="form-label">Numri I Identifikimit Personal(NIC): </label>
                                 </td>
                             </tr>
                             <tr>
@@ -361,7 +353,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Tele" class="form-label">Telephone: </label>
+                                    <label for="Tele" class="form-label">Numri i telefonit: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -371,7 +363,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Address: </label>
+                                    <label for="spec" class="form-label">Adresa: </label>
                                     
                                 </td>
                             </tr>
@@ -383,7 +375,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Date of Birth: </label>
+                                    <label for="name" class="form-label">Data e lindjes: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -396,7 +388,6 @@
                                 <td colspan="2">
                                     <a href="patient.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
                                 
-                                    
                                 </td>
                 
                             </tr>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Dashboard</title>
+    <title_of_schedule>Dashboard</title_of_schedule>
     <style>
         .dashbord-tables{
             animation: transitionIn-Y-over 0.5s;
@@ -25,26 +25,19 @@
 </head>
 <body>
     <?php
-
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='admin'){
             header("location: ../login.php");
         }
 
     }else{
         header("location: ../login.php");
     }
-    
-
-    //import database
     include("../connection.php");
-
-    
     ?>
+
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
@@ -56,13 +49,13 @@
                                     <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
-                                    <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-title_of_schedule">Administrator</p>
+                                    <p class="profile-subtitle">admin@gmail.com</p>
                                 </td>
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                    <a href="../logout.php" ><input type="button" value="Dil" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -75,22 +68,22 @@
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor ">
-                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Doctors</p></a></div>
+                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Doktorë</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-schedule">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Schedule</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Skedulim</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Appointment</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Takim</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-patient">
-                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Patients</p></a></div>
+                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Pacientë</p></a></div>
                     </td>
                 </tr>
             </table>
@@ -104,16 +97,16 @@
                                 
                                 <form action="doctors.php" method="post" class="header-search">
         
-                                    <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Doctor name or Email" list="doctors">&nbsp;&nbsp;
+                                    <input type="search" name="search" class="input-text header-searchbar" placeholder="Kërko emrin e doktorit ose emailin" list="doctors">&nbsp;&nbsp;
                                     
                                     <?php
                                         echo '<datalist id="doctors">';
-                                        $list11 = $database->query("select  docname,docemail from  doctor;");
+                                        $list11 = $database->query("select  doctor_name,doctor_email from  doctor;");
         
                                         for ($y=0;$y<$list11->num_rows;$y++){
                                             $row00=$list11->fetch_assoc();
-                                            $d=$row00["docname"];
-                                            $c=$row00["docemail"];
+                                            $d=$row00["doctor_name"];
+                                            $c=$row00["doctor_email"];
                                             echo "<option value='$d'><br/>";
                                             echo "<option value='$c'><br/>";
                                         };
@@ -122,18 +115,18 @@
                                     ?>
                                     
                                
-                                    <input type="Submit" value="Search" class="login-btn btn-primary-soft btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                                    <input type="Submit" value="Kërko" class="login-btn btn-primary-soft btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                                 
                                 </form>
                                 
                             </td>
                             <td width="15%">
                                 <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                                    Today's Date
+                                    Data e sotme
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
-                                date_default_timezone_set('Asia/Kolkata');
+                                date_default_timezone_set('Europe/Tirane');
         
                                 $today = date('Y-m-d');
                                 echo $today;
@@ -141,8 +134,8 @@
 
                                 $patientrow = $database->query("select  * from  patient;");
                                 $doctorrow = $database->query("select  * from  doctor;");
-                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+                                $appointmentrow = $database->query("select  * from  appointment where appointment_date>='$today';");
+                                $schedulerow = $database->query("select  * from  schedule where schedule_date='$today';");
 
 
                                 ?>
@@ -151,7 +144,6 @@
                             <td width="10%">
                                 <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                             </td>
-        
         
                         </tr>
                 <tr>
@@ -172,7 +164,7 @@
                                                     <?php    echo $doctorrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
-                                                    Doctors &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    Doktorë &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                         </div>
                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
@@ -185,7 +177,7 @@
                                                     <?php    echo $patientrow->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard">
-                                                    Patients &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                    Pacientë &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                         </div>
                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
@@ -198,7 +190,7 @@
                                                     <?php    echo $appointmentrow ->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard" >
-                                                    NewBooking &nbsp;&nbsp;
+                                                    Rezervim i ri &nbsp;&nbsp;
                                                 </div>
                                         </div>
                                                 <div class="btn-icon-back dashboard-icons" style="margin-left: 0px;background-image: url('../img/icons/book-hover.svg');"></div>
@@ -211,7 +203,7 @@
                                                     <?php    echo $schedulerow ->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px">
-                                                    Today Sessions
+                                                    Sesionet e sotme
                                                 </div>
                                         </div>
                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
@@ -224,36 +216,31 @@
                     </td>
                 </tr>
 
-
-
-
-
-
                 <tr>
                     <td colspan="4">
                         <table width="100%" border="0" class="dashbord-tables">
                             <tr>
                                 <td>
                                     <p style="padding:10px;padding-left:48px;padding-bottom:0;font-size:23px;font-weight:700;color:var(--primarycolor);">
-                                        Upcoming Appointments until Next <?php  
+                                        Takimet e ardhshme deri ne datë <?php  
                                         echo date("l",strtotime("+1 week"));
                                         ?>
                                     </p>
                                     <p style="padding-bottom:19px;padding-left:50px;font-size:15px;font-weight:500;color:#212529e3;line-height: 20px;">
-                                        Here's Quick access to Upcoming Appointments until 7 days<br>
-                                        More details available in @Appointment section.
+                                        Këtu gjeni akses të takimeve të ardhshme deri në 7 ditë<br>
+                                        Më shumë detaje i gjeni tek sektori @Takime.
                                     </p>
 
                                 </td>
                                 <td>
                                     <p style="text-align:right;padding:10px;padding-right:48px;padding-bottom:0;font-size:23px;font-weight:700;color:var(--primarycolor);">
-                                        Upcoming Sessions  until Next <?php  
+                                        Sesionet e ardhshme deri në datë <?php  
                                         echo date("l",strtotime("+1 week"));
                                         ?>
                                     </p>
                                     <p style="padding-bottom:19px;text-align:right;padding-right:50px;font-size:15px;font-weight:500;color:#212529e3;line-height: 20px;">
-                                        Here's Quick access to Upcoming Sessions that Scheduled until 7 days<br>
-                                        Add,Remove and Many features available in @Schedule section.
+                                        Këtu gjeni akses të sesioneve të ardhshme të skeduluara deri në 7 ditë<br>
+                                        Shto, Fshij dhe shumë detaje të tjera të disponueshme në sektorin @Skedulim.
                                     </p>
                                 </td>
                             </tr>
@@ -266,22 +253,22 @@
                                         <tr>    
                                                 <th class="table-headin" style="font-size: 12px;">
                                                         
-                                                    Appointment number
+                                                    Numri i Takimit
                                                     
                                                 </th>
                                                 <th class="table-headin">
-                                                    Patient name
-                                                </th>
-                                                <th class="table-headin">
-                                                    
-                                                
-                                                    Doctor
-                                                    
+                                                    Emri i Pacientit
                                                 </th>
                                                 <th class="table-headin">
                                                     
                                                 
-                                                    Session
+                                                    Doktori
+                                                    
+                                                </th>
+                                                <th class="table-headin">
+                                                    
+                                                
+                                                    Sesioni
                                                     
                                                 </th>
                                             </tr>
@@ -290,7 +277,7 @@
                                         
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
-                                            $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today'  and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc";
+                                            $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.patient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  where schedule.schedule_date>='$today'  and schedule.schedule_date<='$nextweek' order by schedule.schedule_date desc";
 
                                                 $result= $database->query($sqlmain);
                 
@@ -302,8 +289,8 @@
                                                     <img src="../img/notfound.svg" width="25%">
                                                     
                                                     <br>
-                                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                                    <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Appointments &nbsp;</font></button>
+                                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nuk gjetëm asgjë në lidhje me kërkimin tuaj!</p>
+                                                    <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Shfaq të gjitha takimet &nbsp;</font></button>
                                                     </a>
                                                     </center>
                                                     <br><br><br><br>
@@ -314,35 +301,35 @@
                                                 else{
                                                 for ( $x=0; $x<$result->num_rows;$x++){
                                                     $row=$result->fetch_assoc();
-                                                    $appoid=$row["appoid"];
-                                                    $scheduleid=$row["scheduleid"];
-                                                    $title=$row["title"];
-                                                    $docname=$row["docname"];
-                                                    $scheduledate=$row["scheduledate"];
-                                                    $scheduletime=$row["scheduletime"];
-                                                    $pname=$row["pname"];
-                                                    $apponum=$row["apponum"];
-                                                    $appodate=$row["appodate"];
+                                                    $appointment_id=$row["appointment_id"];
+                                                    $schedule_id=$row["schedule_id"];
+                                                    $title_of_schedule=$row["title_of_schedule"];
+                                                    $doctor_name=$row["doctor_name"];
+                                                    $schedule_date=$row["schedule_date"];
+                                                    $schedule_time=$row["schedule_time"];
+                                                    $patient_name=$row["patient_name"];
+                                                    $appointment_number=$row["appointment_number"];
+                                                    $appointment_date=$row["appointment_date"];
                                                     echo '<tr>
 
 
                                                         <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);padding:20px;">
-                                                            '.$apponum.'
+                                                            '.$appointment_number.'
                                                             
                                                         </td>
 
                                                         <td style="font-weight:600;"> &nbsp;'.
                                                         
-                                                        substr($pname,0,25)
+                                                        substr($patient_name,0,25)
                                                         .'</td >
                                                         <td style="font-weight:600;"> &nbsp;'.
                                                         
-                                                            substr($docname,0,25)
+                                                            substr($doctor_name,0,25)
                                                             .'</td >
                                                            
                                                         
                                                         <td>
-                                                        '.substr($title,0,15).'
+                                                        '.substr($title_of_schedule,0,15).'
                                                         </td>
 
                                                     </tr>';
@@ -367,7 +354,7 @@
                                                 <th class="table-headin">
                                                     
                                                 
-                                                Session Title
+                                                Titulli i sesionit
                                                 
                                                 </th>
                                                 
@@ -376,7 +363,7 @@
                                                 </th>
                                                 <th class="table-headin">
                                                     
-                                                    Sheduled Date & Time
+                                                    Data dhe ora e sesionit
                                                     
                                                 </th>
                                                     
@@ -386,7 +373,7 @@
                                         
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
-                                            $sqlmain= "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today' and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc"; 
+                                            $sqlmain= "select schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,schedule.schedule_date,schedule.schedule_time,schedule.number_of_patients from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id  where schedule.schedule_date>='$today' and schedule.schedule_date<='$nextweek' order by schedule.schedule_date desc"; 
                                                 $result= $database->query($sqlmain);
                 
                                                 if($result->num_rows==0){
@@ -397,8 +384,8 @@
                                                     <img src="../img/notfound.svg" width="25%">
                                                     
                                                     <br>
-                                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Sessions &nbsp;</font></button>
+                                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nuk gjetëm asgjë në lidhje me kërkimin tuaj !</p>
+                                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Shfaq të gjitha sesionet &nbsp;</font></button>
                                                     </a>
                                                     </center>
                                                     <br><br><br><br>
@@ -409,24 +396,22 @@
                                                 else{
                                                 for ( $x=0; $x<$result->num_rows;$x++){
                                                     $row=$result->fetch_assoc();
-                                                    $scheduleid=$row["scheduleid"];
-                                                    $title=$row["title"];
-                                                    $docname=$row["docname"];
-                                                    $scheduledate=$row["scheduledate"];
-                                                    $scheduletime=$row["scheduletime"];
-                                                    $nop=$row["nop"];
+                                                    $schedule_id=$row["schedule_id"];
+                                                    $title_of_schedule=$row["title_of_schedule"];
+                                                    $doctor_name=$row["doctor_name"];
+                                                    $schedule_date=$row["schedule_date"];
+                                                    $schedule_time=$row["schedule_time"];
+                                                    $number_of_patients=$row["number_of_patients"];
                                                     echo '<tr>
                                                         <td style="padding:20px;"> &nbsp;'.
-                                                        substr($title,0,30)
+                                                        substr($title_of_schedule,0,30)
                                                         .'</td>
                                                         <td>
-                                                        '.substr($docname,0,20).'
+                                                        '.substr($doctor_name,0,20).'
                                                         </td>
                                                         <td style="text-align:center;">
-                                                            '.substr($scheduledate,0,10).' '.substr($scheduletime,0,5).'
+                                                            '.substr($schedule_date,0,10).' '.substr($schedule_time,0,5).'
                                                         </td>
-
-                
                                                        
                                                     </tr>';
                                                     
@@ -445,12 +430,12 @@
                             <tr>
                                 <td>
                                     <center>
-                                        <a href="appointment.php" class="non-style-link"><button class="btn-primary btn" style="width:85%">Show all Appointments</button></a>
+                                        <a href="appointment.php" class="non-style-link"><button class="btn-primary btn" style="width:85%">Shfaq të gjitha takimet</button></a>
                                     </center>
                                 </td>
                                 <td>
                                     <center>
-                                        <a href="schedule.php" class="non-style-link"><button class="btn-primary btn" style="width:85%">Show all Sessions</button></a>
+                                        <a href="schedule.php" class="non-style-link"><button class="btn-primary btn" style="width:85%">Shfaq të gjitha sesionet</button></a>
                                     </center>
                                 </td>
                             </tr>

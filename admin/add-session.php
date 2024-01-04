@@ -1,9 +1,8 @@
 <?php
-
-    session_start();
+session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='admin'){
             header("location: ../login.php");
         }
 
@@ -12,19 +11,15 @@
     }
     
     
-    if($_POST){
-        //import database
+    if($_POST){ // nese eshte shtypur butoni submit
         include("../connection.php");
         $title=$_POST["title"];
-        $docid=$_POST["docid"];
-        $nop=$_POST["nop"];
+        $doctor_id=$_POST["doctor_id"];
+        $number_of_patients=$_POST["number_of_patients"];
         $date=$_POST["date"];
         $time=$_POST["time"];
-        $sql="insert into schedule (docid,title,scheduledate,scheduletime,nop) values ($docid,'$title','$date','$time',$nop);";
+        $sql="insert into schedule (doctor_id,title_of_schedule,schedule_date,schedule_time,number_of_patients) values ($doctor_id,'$title','$date','$time',$number_of_patients);";
         $result= $database->query($sql);
         header("location: schedule.php?action=session-added&title=$title");
-        
     }
-
-
 ?>
