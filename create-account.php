@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">  
     <link rel="stylesheet" href="css/signup.css">
         
-    <title>Create Account</title>
+    <title>Krijo llogari</title>
     <style>
         .container{
             animation: transitionIn-X 0.5s;
@@ -103,12 +103,12 @@ if($_POST){
             <tr>
                 <form action="" method="POST" >
                 <td class="label-td" colspan="2">
-                    <label for="newemail" class="form-label">Email: </label>
+                    <label for="newemail" class="form-label">Email-i: </label>
                 </td>
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <input type="email" name="newemail" class="input-text" placeholder="Email Address" required>
+                    <input type="email" name="newemail" class="input-text" placeholder="Adresa Email-it" required>
                 </td>
                 
             </tr>
@@ -119,7 +119,7 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <input type="tel" name="tele" class="input-text"  placeholder="ex: 0712345678" pattern="[0]{1}[0-9]{9}" >
+                    <input type="tel" name="tele" class="input-text"  placeholder="0691234567" pattern="[0]{1}[0-9]{9}" >
                 </td>
             </tr>
             <tr>
@@ -129,7 +129,7 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <input type="password" name="newpassword" class="input-text" placeholder="New Password" required>
+                    <input type="password" name="newpassword" class="input-text" placeholder="Fjalëkalimi i ri" required>
                 </td>
             </tr>
             <tr>
@@ -139,7 +139,7 @@ if($_POST){
             </tr>
             <tr>
                 <td class="label-td" colspan="2">
-                    <input type="password" name="cpassword" class="input-text" placeholder="Conform Password" required>
+                    <input type="password" name="cpassword" class="input-text" placeholder="Konfirmo fjalëkalimin" required>
                 </td>
             </tr>
      
@@ -153,7 +153,7 @@ if($_POST){
             
             <tr>
                 <td>
-                    <input type="reset" value="Rivendos" class="login-btn btn-primary-soft btn" >
+                    <input type="reset" value="Rifillo" class="login-btn btn-primary-soft btn" >
                 </td>
                 <td>
                     <input type="submit" value="Regjistrohu" class="login-btn btn-primary btn">

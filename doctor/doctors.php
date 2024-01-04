@@ -21,8 +21,6 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -55,7 +53,7 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-subtitle">admin@gmail.com</p>
                                 </td>
                             </tr>
                             <tr>
@@ -69,27 +67,27 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-dashbord" >
-                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">Dashboard</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu"><div><p class="menu-text">Grafikë</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor menu-active menu-icon-doctor-active">
-                        <a href="doctors.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Doctors</p></a></div>
+                        <a href="doctors.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Doktorët</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-schedule">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Schedule</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Seancat</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Appointment</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Konsultat</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-patient">
-                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Patients</p></a></div>
+                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Pacientët</p></a></div>
                     </td>
                 </tr>
 

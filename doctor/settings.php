@@ -10,7 +10,7 @@
         
 
 
-    <title>Settings</title>
+    <title>Cilësime</title>
     <style>
         .dashbord-tables{
             animation: transitionIn-Y-over 0.5s;
@@ -73,7 +73,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                    <a href="../logout.php" ><input type="button" value="Dil" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -81,28 +81,28 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-dashbord" >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Dashboard</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Grafikë</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Appointments</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Konsultat e Mia</p></a></div>
                     </td>
                 </tr>
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">My Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Seancat e Skeduluara</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-patient">
-                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">My Patients</p></a></div>
+                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Pacientët e Mi</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings  menu-active menu-icon-settings-active">
-                        <a href="settings.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Settings</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Cilësime</p></a></div>
                     </td>
                 </tr>
                 
@@ -114,16 +114,16 @@
                         <tr >
                             
                         <td width="13%" >
-                    <a href="settings.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    <a href="settings.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Kthehu</font></button></a>
                     </td>
                     <td>
-                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Settings</p>
+                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Cilësime</p>
                                            
                     </td>
                     
                             <td width="15%">
                                 <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                                    Today's Date
+                                    Data Sot
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
@@ -165,11 +165,11 @@
                                         <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
                                         <div>
                                                 <div class="h1-dashboard">
-                                                    Account Settings  &nbsp;
+                                                Cilësimet e llogarisë  &nbsp;
 
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px;">
-                                                    Edit your Account Details & Change Password
+                                                Ndryshoni detajet e llogarisë tuaj & Ndryshoni fjalëkalimin
                                                 </div>
                                         </div>
                                                 
@@ -191,11 +191,11 @@
                                         <div class="btn-icon-back dashboard-icons-setting " style="background-image: url('../img/icons/view-iceblue.svg');"></div>
                                         <div>
                                                 <div class="h1-dashboard" >
-                                                    View Account Details
+                                                Shikoni Detajet e Llogarisë
                                                     
                                                 </div><br>
                                                 <div class="h3-dashboard"  style="font-size: 15px;">
-                                                    View Personal information About Your Account
+                                                Shikoni informacionin personal rreth llogarisë suaj
                                                 </div>
                                         </div>
                                                 
@@ -216,11 +216,11 @@
                                         <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/patients-hover.svg');"></div>
                                         <div>
                                                 <div class="h1-dashboard" style="color: #ff5050;">
-                                                    Delete Account
+                                                Fshij Llogarinë
                                                     
                                                 </div><br>
                                                 <div class="h3-dashboard"  style="font-size: 15px;">
-                                                    Will Permanently Remove your Account
+                                                Do të hiqni përgjithmonë llogarinë tuaj
                                                 </div>
                                         </div>
                                                 
@@ -248,15 +248,15 @@
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
-                        <h2>Are you sure?</h2>
+                        <h2>A je i sigurt?</h2>
                         <a class="close" href="settings.php">&times;</a>
                         <div class="content">
-                            You want to delete this record<br>('.substr($nameget,0,40).').
+                        Ju dëshironi ta fshini këtë rekord<br>('.substr($nameget,0,40).').
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
-                        <a href="delete-doctor.php?id='.$id.'" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Yes&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
-                        <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;No&nbsp;&nbsp;</font></button></a>
+                        <a href="delete-doctor.php?id='.$id.'" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Po&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
+                        <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;Jo&nbsp;&nbsp;</font></button></a>
 
                         </div>
                     </center>
@@ -282,23 +282,20 @@
                     <center>
                         <h2></h2>
                         <a class="close" href="settings.php">&times;</a>
-                        <div class="content">
-                            eDoc Web App<br>
-                            
-                        </div>
+                       
                         <div style="display: flex;justify-content: center;">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
                         
                             <tr>
                                 <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">View Details.</p><br><br>
+                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Shiko Detajet.</p><br><br>
                                 </td>
                             </tr>
                             
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="name" class="form-label">Name: </label>
+                                    <label for="name" class="form-label">Emri: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -309,7 +306,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Email" class="form-label">Email: </label>
+                                    <label for="Email" class="form-label">Email-i: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -329,7 +326,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Tele" class="form-label">Telephone: </label>
+                                    <label for="Tele" class="form-label">Telefoni: </label>
                                 </td>
                             </tr>
                             <tr>
@@ -339,7 +336,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label">Specialties: </label>
+                                    <label for="spec" class="form-label">Specialiteti: </label>
                                     
                                 </td>
                             </tr>
@@ -381,8 +378,8 @@
 
             $error_1=$_GET["error"];
                 $errorlist= array(
-                    '1'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Already have an account for this Email address.</label>',
-                    '2'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Password Conformation Error! Reconform Password</label>',
+                    '1'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Tashmë keni një llogari për këtë adresë email-i.</label>',
+                    '2'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Gabim në konformimin e fjalëkalimit! Rikonformo fjalëkalimin</label>',
                     '3'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;"></label>',
                     '4'=>"",
                     '0'=>'',
@@ -406,32 +403,32 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Edit Doctor Details.</p>
-                                        Doctor ID : '.$id.' (Auto Generated)<br><br>
+                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Redakto Detajet e Doktorit.</p>
+                                        ID Doktorit: '.$id.' (Krijuar automatikisht)<br><br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
                                             <form action="edit-doc.php" method="POST" class="add-new-form">
-                                            <label for="Email" class="form-label">Email: </label>
+                                            <label for="Email" class="form-label">Email-i: </label>
                                             <input type="hidden" value="'.$id.'" name="id00">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
                                         <input type="hidden" name="oldemail" value="'.$email.'" >
-                                        <input type="email" name="email" class="input-text" placeholder="Email Address" value="'.$email.'" required><br>
+                                        <input type="email" name="email" class="input-text" placeholder="Adresa Email-it" value="'.$email.'" required><br>
                                         </td>
                                     </tr>
                                     <tr>
                                         
                                         <td class="label-td" colspan="2">
-                                            <label for="name" class="form-label">Name: </label>
+                                            <label for="name" class="form-label">Emri: </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="name" class="input-text" placeholder="Doctor Name" value="'.$name.'" required><br>
+                                            <input type="text" name="name" class="input-text" placeholder="Emri Doktorit" value="'.$name.'" required><br>
                                         </td>
                                         
                                     </tr>
@@ -443,22 +440,22 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="text" name="nic" class="input-text" placeholder="NIC Number" value="'.$nic.'" required><br>
+                                            <input type="text" name="nic" class="input-text" placeholder="Numri Identifikimit" value="'.$nic.'" required><br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="Tele" class="form-label">Telephone: </label>
+                                            <label for="Tele" class="form-label">Telefoni: </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="tel" name="Tele" class="input-text" placeholder="Telephone Number" value="'.$tele.'" required><br>
+                                            <input type="tel" name="Tele" class="input-text" placeholder="Numri Telefonit" value="'.$tele.'" required><br>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="spec" class="form-label">Choose specialties: (Current'.$spcil_name.')</label>
+                                            <label for="spec" class="form-label">Zgjidh Specialitetin: (Aktualisht '.$spcil_name.')</label>
                                             
                                         </td>
                                     </tr>
@@ -467,7 +464,7 @@
                                             <select name="spec" id="" class="box">';
                                                 
                 
-                                                $list11 = $database->query("select  * from  specialty;");
+                                                $list11 = $database->query("select  * from  specialties;");
                 
                                                 for ($y=0;$y<$list11->num_rows;$y++){
                                                     $row00=$list11->fetch_assoc();
@@ -484,30 +481,30 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="password" class="form-label">Password: </label>
+                                            <label for="password" class="form-label">Fjalëkalimi: </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="password" class="input-text" placeholder="Defind a Password" required><br>
+                                            <input type="password" name="password" class="input-text" placeholder="Përcaktoni një fjalëkalim" required><br>
                                         </td>
                                     </tr><tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="cpassword" class="form-label">Conform Password: </label>
+                                            <label for="cpassword" class="form-label">Konfirmo fjalëkalimin </label>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <input type="password" name="cpassword" class="input-text" placeholder="Conform Password" required><br>
+                                            <input type="password" name="cpassword" class="input-text" placeholder="Konfirmo fjalëkalimin" required><br>
                                         </td>
                                     </tr>
                                     
                         
                                     <tr>
                                         <td colspan="2">
-                                            <input type="reset" value="Reset" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input type="reset" value="Rivendos" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         
-                                            <input type="submit" value="Save" class="login-btn btn-primary btn">
+                                            <input type="submit" value="Ruaj" class="login-btn btn-primary btn">
                                         </td>
                         
                                     </tr>
@@ -528,16 +525,15 @@
                         <div class="popup">
                         <center>
                         <br><br><br><br>
-                            <h2>Edit Successfully!</h2>
+                            <h2>U ndryshua me sukses!</h2>
                             <a class="close" href="settings.php">&times;</a>
                             <div class="content">
-                                If You change your email also Please logout and login again with your new email
-                                
+                            Nëse ndryshoni edhe emailin tuaj, ju lutemi dilni dhe identifikohuni përsëri me emailin tuaj të ri
                             </div>
                             <div style="display: flex;justify-content: center;">
                             
                             <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
-                            <a href="../logout.php" class="non-style-link"><button  class="btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;Log out&nbsp;&nbsp;</font></button></a>
+                            <a href="../logout.php" class="non-style-link"><button  class="btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;Dil&nbsp;&nbsp;</font></button></a>
 
                             </div>
                             <br><br>

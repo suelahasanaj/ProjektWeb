@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Dashboard</title>
+    <title>Grafikë</title>
     <style>
         .dashbord-tables,.doctor-heade{
             animation: transitionIn-Y-over 0.5s;
@@ -72,7 +72,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                    <a href="../logout.php" ><input type="button" value="Dil" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -80,28 +80,28 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-dashbord menu-active menu-icon-dashbord-active" >
-                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Dashboard</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Grafikë</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-appoinment">
-                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">My Appointments</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu"><div><p class="menu-text">Konsultat e Mia</p></a></div>
                     </td>
                 </tr>
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">My Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Seancat e Skeduluara</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-patient">
-                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">My Patients</p></a></div>
+                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Pacientët e mi</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Settings</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Cilësime</p></a></div>
                     </td>
                 </tr>
                 
@@ -113,7 +113,7 @@
                         <tr >
                             
                             <td colspan="1" class="nav-bar" >
-                            <p style="font-size: 23px;padding-left:12px;font-weight: 600;margin-left:20px;">     Dashboard</p>
+                            <p style="font-size: 23px;padding-left:12px;font-weight: 600;margin-left:20px;">     Grafikë</p>
                           
                             </td>
                             <td width="25%">
@@ -121,7 +121,7 @@
                             </td>
                             <td width="15%">
                                 <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                                    Today's Date
+                                    Data Sot
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
@@ -153,12 +153,12 @@
                     <table class="filter-container doctor-header" style="border: none;width:95%" border="0" >
                     <tr>
                         <td >
-                            <h3>Welcome!</h3>
+                            <h3>Mirëseerdhe!</h3>
                             <h1><?php echo $username  ?>.</h1>
-                            <p>Thanks for joinnig with us. We are always trying to get you a complete service<br>
-                            You can view your dailly schedule, Reach Patients Appointment at home!<br><br>
+                            <p>Faleminderit që u bashkuat me ne. Ne jemi gjithmonë duke u përpjekur t'ju ofrojmë një shërbim të plotë.<br> 
+                            Ju mund të shikoni orarin tuaj ditor, Caktoni takimin me pacientët në shtëpi!<br><br>
                             </p>
-                            <a href="appointment.php" class="non-style-link"><button class="btn-primary btn" style="width:30%">View My Appointments</button></a>
+                            <a href="appointment.php" class="non-style-link"><button class="btn-primary btn" style="width:30%">Shiko Konsultat e Mia</button></a>
                             <br>
                             <br>
                         </td>
@@ -183,7 +183,7 @@
                                         <table class="filter-container" style="border: none;" border="0">
                                             <tr>
                                                 <td colspan="4">
-                                                    <p style="font-size: 20px;font-weight:600;padding-left: 12px;">Status</p>
+                                                    <p style="font-size: 20px;font-weight:600;padding-left: 12px;">Statusi</p>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -194,7 +194,7 @@
                                                                     <?php    echo $doctorrow->num_rows  ?>
                                                                 </div><br>
                                                                 <div class="h3-dashboard">
-                                                                    All Doctors &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    Te gjithë Doktorët &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </div>
                                                         </div>
                                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
@@ -207,7 +207,7 @@
                                                                     <?php    echo $patientrow->num_rows  ?>
                                                                 </div><br>
                                                                 <div class="h3-dashboard">
-                                                                    All Patients &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    Te gjithë Pacientët &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                                 </div>
                                                         </div>
                                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
@@ -222,7 +222,7 @@
                                                                     <?php    echo $appointmentrow ->num_rows  ?>
                                                                 </div><br>
                                                                 <div class="h3-dashboard" >
-                                                                    NewBooking &nbsp;&nbsp;
+                                                                    Rezervimet e Reja &nbsp;&nbsp;
                                                                 </div>
                                                         </div>
                                                                 <div class="btn-icon-back dashboard-icons" style="margin-left: 0px;background-image: url('../img/icons/book-hover.svg');"></div>
@@ -237,7 +237,7 @@
                                                                     <?php    echo $schedulerow ->num_rows  ?>
                                                                 </div><br>
                                                                 <div class="h3-dashboard" style="font-size: 15px">
-                                                                    Today Sessions
+                                                                    Seancat Sot
                                                                 </div>
                                                         </div>
                                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
@@ -253,7 +253,7 @@
 
 
                             
-                                    <p id="anim" style="font-size: 20px;font-weight:600;padding-left: 40px;">Your Up Coming Sessions until Next week</p>
+                                    <p id="anim" style="font-size: 20px;font-weight:600;padding-left: 40px;">Seancat tuaja të ardhshme deri në javën tjetër</p>
                                     <center>
                                         <div class="abc scroll" style="height: 250px;padding: 0;margin: 0;">
                                         <table width="85%" class="sub-table scrolldown" border="0" >
@@ -263,16 +263,16 @@
                                                 <th class="table-headin">
                                                     
                                                 
-                                                Session Title
+                                                Titulli Seancës
                                                 
                                                 </th>
                                                 
                                                 <th class="table-headin">
-                                                Sheduled Date
+                                                Data e planifikuar
                                                 </th>
                                                 <th class="table-headin">
                                                     
-                                                     Time
+                                                     Ora
                                                     
                                                 </th>
                                                     

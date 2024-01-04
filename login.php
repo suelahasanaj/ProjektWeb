@@ -40,7 +40,7 @@
             $utype=$result->fetch_assoc()['usertype'];
             if ($utype=='p'){
                 
-                $checker = $database->query("select * from patient where pemail='$email' and ppassword='$password'");
+                $checker = $database->query("select * from patient where patient_email='$email' and patient_password='$password'");
                 if ($checker->num_rows==1){
 
 
@@ -55,7 +55,7 @@
 
             }elseif($utype=='a'){
                
-                $checker = $database->query("select * from admin where aemail='$email' and apassword='$password'");
+                $checker = $database->query("select * from admin where admin_email='$email' and admin_password='$password'");
                 if ($checker->num_rows==1){
 
                     $_SESSION['user']=$email;
