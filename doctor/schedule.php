@@ -396,7 +396,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label"><b>Pacientët që janë regjistruar tashmë për këtë seancë:</b> ('.$result12->num_rows."/".$nop.')</label>
+                                    <label for="spec" class="form-label"><b>Pacientët që janë regjistruar tashmë për këtë seancë:</b> ('.$result12->num_rows."/".$number_of_patients.')</label>
                                     <br><br>
                                 </td>
                             </tr>

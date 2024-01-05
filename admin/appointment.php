@@ -411,12 +411,12 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nop" class="form-label">Numri i pacientëve/Numri i takimeve: </label>
+                                    <label for="number_of_patients" class="form-label">Numri i pacientëve/Numri i takimeve: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="number" name="nop" class="input-text" min="0"  placeholder="Numri final i takimeve për këtë sesion varet nga ky numër" required><br>
+                                    <input type="number" name="number_of_patients" class="input-text" min="0"  placeholder="Numri final i takimeve për këtë sesion varet nga ky numër" required><br>
                                 </td>
                             </tr>
                             <tr>

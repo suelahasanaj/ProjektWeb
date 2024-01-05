@@ -228,7 +228,7 @@
                                     $name=$row["doctor_name"];
                                     $email=$row["doctor_email"];
                                     $spe=$row["specialty"];
-                                    $spcil_res= $database->query("select sname from specialty where id='$spe'");
+                                    $spcil_res= $database->query("select specialty_name from specialty where id='$spe'");
                                     $spcil_array= $spcil_res->fetch_assoc();
                                     $spcil_name=$spcil_array["specialty_name"];
                                     echo '<tr>
@@ -305,7 +305,7 @@
             $email=$row["doctor_email"];
             $spe=$row["specialty"];
             
-            $spcil_res= $database->query("select sname from specialty where id='$spe'");
+            $spcil_res= $database->query("select specialty_name from specialty where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
             $spcil_name=$spcil_array["specialty_name"];
             $nic=$row['doctor_nic'];
@@ -571,7 +571,7 @@
             $email=$row["doctor_email"];
             $spe=$row["specialty"];
             
-            $spcil_res= $database->query("select sname from specialty where id='$spe'");
+            $spcil_res= $database->query("select specialty_name from specialty where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
             $spcil_name=$spcil_array["specialty_name"];
             $nic=$row['doctor_nic'];

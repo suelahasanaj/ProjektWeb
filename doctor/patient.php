@@ -148,7 +148,7 @@
                             <?php
                                 echo '<datalist id="patient">';
                                 $list11 = $database->query($sqlmain);
-                               //$list12= $database->query("select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.docid=1;");
+                               //$list12= $database->query("select * from appointment inner join patient on patient.patient_id=appointment.patient_id inner join schedule on schedule.schedule_id=appointment.schedule_id where schedule.doctor_id=1;");
 
                                 for ($y=0;$y<$list11->num_rows;$y++){
                                     $row00=$list11->fetch_assoc();

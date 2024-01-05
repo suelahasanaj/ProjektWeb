@@ -305,7 +305,7 @@
                                         
                                         <!--<a href="?action=view&id='.$appointment_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
                                        &nbsp;&nbsp;&nbsp;-->
-                                       <a href="?action=drop&id='.$appointment_id.'&name='.$patient_name.'&session='.$title_of_schedule.'&apponum='.$appointment_number.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Anullo</font></button></a>
+                                       <a href="?action=drop&id='.$appointment_id.'&name='.$patient_name.'&session='.$title_of_schedule.'&appointment_number='.$appointment_number.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Anullo</font></button></a>
                                        &nbsp;&nbsp;&nbsp;</div>
                                         </td>
                                     </tr>';
@@ -371,12 +371,12 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="docid" class="form-label">Select Doctor: </label>
+                                    <label for="doctor_id" class="form-label">Select Doctor: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <select name="docid" id="" class="box" >
+                                    <select name="doctor_id" id="" class="box" >
                                     <option value="" disabled selected hidden>Choose Doctor Name from the list</option><br/>';
                                         
         
@@ -397,12 +397,12 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nop" class="form-label">Number of Patients/Appointment Numbers : </label>
+                                    <label for="number_of_patients" class="form-label">Number of Patients/Appointment Numbers : </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="number" name="nop" class="input-text" min="0"  placeholder="The final appointment number for this session depends on this number" required><br>
+                                    <input type="number" name="number_of_patients" class="input-text" min="0"  placeholder="The final appointment number for this session depends on this number" required><br>
                                 </td>
                             </tr>
                             <tr>
@@ -470,7 +470,7 @@
         }elseif($action=='drop'){
             $nameget=$_GET["name"];
             $session=$_GET["session"];
-            $apponum=$_GET["apponum"];
+            $appointment_number=$_GET["appointment_number"];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
@@ -480,7 +480,7 @@
                         <div class="content">
                             Ju dëshironi ta fshini këtë rekord<br><br>
                             Emri i Pacientit: &nbsp;<b>'.substr($nameget,0,40).'</b><br>
-                            Numri Takimit&nbsp; : <b>'.substr($apponum,0,40).'</b><br><br>
+                            Numri Takimit&nbsp; : <b>'.substr($appointment_number,0,40).'</b><br><br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">

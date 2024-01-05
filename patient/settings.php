@@ -44,14 +44,14 @@
     
 
     include("../connection.php");
-    $sqlmain= "select * from patient where pemail=?";
+    $sqlmain= "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
     $stmt->bind_param("s",$useremail);
     $stmt->execute();
     $result = $stmt->get_result();
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+    $userid= $userfetch["patient_id"];
+    $username=$userfetch["patient_name"];
 
     ?>
     <div class="container">
@@ -101,7 +101,7 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings  menu-active menu-icon-settings-active">
-                        <a href="settings.php" class="non-style-link-menu  non-style-link-menu-active"><div><p class="menu-text">Rregullime</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu  non-style-link-menu-active"><div><p class="menu-text">Cilësime</p></a></div>
                     </td>
                 </tr>
                 
@@ -116,7 +116,7 @@
                     <a href="settings.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
                     </td>
                     <td>
-                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Rregullime</p>
+                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Cilësime</p>
                                            
                     </td>
                     
@@ -134,8 +134,8 @@
 
                                 $patientrow = $database->query("select  * from  patient;");
                                 $doctorrow = $database->query("select  * from  doctor;");
-                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+                                $appointmentrow = $database->query("select  * from  appointment where appointment_date>='$today';");
+                                $schedulerow = $database->query("select  * from  schedule where schedule_date='$today';");
 
 
                                 ?>
@@ -164,7 +164,7 @@
                                         <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
                                         <div>
                                                 <div class="h1-dashboard">
-                                                    Rregullimet e Profilit  &nbsp;
+                                                    Cilësimet e Profilit  &nbsp;
 
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px;">
@@ -262,20 +262,20 @@
             </div>
             ';
         }elseif($action=='view'){
-            $sqlmain= "select * from patient where pid=?";
+            $sqlmain= "select * from patient where patient_id=?";
             $stmt = $database->prepare($sqlmain);
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
             $row=$result->fetch_assoc();
-            $name=$row["pname"];
-            $email=$row["pemail"];
-            $address=$row["paddress"];
+            $name=$row["patient_name"];
+            $email=$row["patient_email"];
+            $address=$row["patient_address"];
             
            
-            $dob=$row["pdob"];
-            $nic=$row['pnic'];
-            $tele=$row['ptel'];
+            $dob=$row["patient_birthdate"];
+            $nic=$row['patient_nic'];
+            $tele=$row['patient_phonenumber'];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
@@ -377,20 +377,20 @@
             </div>
             ';
         }elseif($action=='edit'){
-            $sqlmain= "select * from patient where pid=?";
+            $sqlmain= "select * from patient where patient_id=?";
             $stmt = $database->prepare($sqlmain);
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();
             $row=$result->fetch_assoc();
-            $name=$row["pname"];
-            $email=$row["pemail"];
+            $name=$row["patient_name"];
+            $email=$row["patient_email"];
            
             
             
-            $address=$row["paddress"];
-            $nic=$row['pnic'];
-            $tele=$row['ptel'];
+            $address=$row["patient_address"];
+            $nic=$row['patient_nic'];
+            $tele=$row['patient_phonenumber'];
 
             $error_1=$_GET["error"];
                 $errorlist= array(

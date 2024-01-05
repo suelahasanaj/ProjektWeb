@@ -24,7 +24,7 @@
         if ($password==$cpassword){
             $error='3';
             $result= $database->query("select doctor.doctor_id from doctor inner join webuser on doctor.doctor_email=webuser.email where webuser.email='$email';");
-            //$resultqq= $database->query("select * from doctor where docid='$id';");
+            //$resultqq= $database->query("select * from doctor where doctor_id='$id';");
             if($result->num_rows==1){
                 $id2=$result->fetch_assoc()["doctor_id"];
             }else{
@@ -34,13 +34,13 @@
             echo $id2."jdfjdfdh";
             if($id2!=$id){
                 $error='1';
-                //$resultqq1= $database->query("select * from doctor where docemail='$email';");
-                //$did= $resultqq1->fetch_assoc()["docid"];
+                //$resultqq1= $database->query("select * from doctor where doctor_email='$email';");
+                //$did= $resultqq1->fetch_assoc()["doctor_id"];
                 //if($resultqq1->num_rows==1){
                     
             }else{
 
-                //$sql1="insert into doctor(docemail,docname,docpassword,docnic,doctel,specialties) values('$email','$name','$password','$nic','$tele',$spec);";
+                //$sql1="insert into doctor(doctor_email,doctor_name,doctor_password,doctor_nic,doctor_phonenumber,specialties) values('$email','$name','$password','$nic','$tele',$spec);";
                 $sql1="update doctor set doctor_email='$email',doctor_name='$name',doctor_password='$password',doctor_nic='$nic',doctor_phonenumber='$tele',specialty=$spec where doctor_id=$id ;";
                 $database->query($sql1);
 

@@ -100,7 +100,7 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Rregullime</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Cilësime</p></a></div>
                     </td>
                 </tr>
                 
@@ -132,8 +132,8 @@
 
                                 $patientrow = $database->query("select  * from  patient;");
                                 $doctorrow = $database->query("select  * from  doctor;");
-                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+                                $appointmentrow = $database->query("select  * from  appointment where appointment_date>='$today';");
+                                $schedulerow = $database->query("select  * from  schedule where schedule_date='$today';");
 
 
                                 ?>
@@ -167,11 +167,11 @@
                                 
                                 <?php
                                     echo '<datalist id="doctors">';
-                                    $list11 = $database->query("select  docname,docemail from  doctor;");
+                                    $list11 = $database->query("select  doctor_name,doctor_email from  doctor;");
     
                                     for ($y=0;$y<$list11->num_rows;$y++){
                                         $row00=$list11->fetch_assoc();
-                                        $d=$row00["docname"];
+                                        $d=$row00["doctor_name"];
                                         
                                         echo "<option value='$d'><br/>";
                                         
@@ -316,7 +316,7 @@
                                         
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
-                                                $sqlmain= "select * from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  patient.pid=$userid  and schedule.scheduledate>='$today' order by schedule.scheduledate asc";
+                                                $sqlmain= "select * from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.patient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  where  patient.patient_id=$userid  and schedule.schedule_date>='$today' order by schedule.schedule_date asc";
                                                 //echo $sqlmain;
                                                 $result= $database->query($sqlmain);
                 
@@ -340,25 +340,25 @@
                                                 else{
                                                 for ( $x=0; $x<$result->num_rows;$x++){
                                                     $row=$result->fetch_assoc();
-                                                    $scheduleid=$row["scheduleid"];
+                                                    $schedule_id=$row["schedule_id"];
                                                     $title=$row["title"];
-                                                    $apponum=$row["apponum"];
-                                                    $docname=$row["docname"];
-                                                    $scheduledate=$row["scheduledate"];
-                                                    $scheduletime=$row["scheduletime"];
+                                                    $appointment_number=$row["appointment_number"];
+                                                    $doctor_name=$row["doctor_name"];
+                                                    $schedule_date=$row["schedule_date"];
+                                                    $schedule_time=$row["schedule_time"];
                                                    
                                                     echo '<tr>
                                                         <td style="padding:30px;font-size:25px;font-weight:700;"> &nbsp;'.
-                                                        $apponum
+                                                        $appointment_number
                                                         .'</td>
                                                         <td style="padding:20px;"> &nbsp;'.
                                                         substr($title,0,30)
                                                         .'</td>
                                                         <td>
-                                                        '.substr($docname,0,20).'
+                                                        '.substr($doctor_name,0,20).'
                                                         </td>
                                                         <td style="text-align:center;">
-                                                            '.substr($scheduledate,0,10).' '.substr($scheduletime,0,5).'
+                                                            '.substr($schedule_date,0,10).' '.substr($schedule_time,0,5).'
                                                         </td>
 
                                                        

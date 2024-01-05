@@ -37,14 +37,14 @@
     
 
     include("../connection.php");
-    $sqlmain= "select * from patient where pemail=?";
+    $sqlmain= "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
     $stmt->bind_param("s",$useremail);
     $stmt->execute();
     $result = $stmt->get_result();
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+    $userid= $userfetch["patient_id"];
+    $username=$userfetch["patient_name"];
 
 
     //echo $userid;
@@ -101,7 +101,7 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Rregullime</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Cilësime</p></a></div>
                     </td>
                 </tr>
                 
@@ -109,7 +109,7 @@
         </div>
         <?php
 
-                $sqlmain= "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduledate>='$today'  order by schedule.scheduledate asc";
+                $sqlmain= "select * from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id where schedule.schedule_date>='$today'  order by schedule.schedule_date asc";
                 $sqlpt1="";
                 $insertkey="";
                 $q='';
@@ -120,7 +120,7 @@
                         if(!empty($_POST["search"])){
                             
                             $keyword=$_POST["search"];
-                            $sqlmain= "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduledate>='$today' and (doctor.docname='$keyword' or doctor.docname like '$keyword%' or doctor.docname like '%$keyword' or doctor.docname like '%$keyword%' or schedule.title='$keyword' or schedule.title like '$keyword%' or schedule.title like '%$keyword' or schedule.title like '%$keyword%' or schedule.scheduledate like '$keyword%' or schedule.scheduledate like '%$keyword' or schedule.scheduledate like '%$keyword%' or schedule.scheduledate='$keyword' )  order by schedule.scheduledate asc";
+                            $sqlmain= "select * from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id where schedule.schedule_date>='$today' and (doctor.doctor_name='$keyword' or doctor.doctor_name like '$keyword%' or doctor.doctor_name like '%$keyword' or doctor.doctor_name like '%$keyword%' or schedule.title='$keyword' or schedule.title like '$keyword%' or schedule.title like '%$keyword' or schedule.title like '%$keyword%' or schedule.schedule_date like '$keyword%' or schedule.schedule_date like '%$keyword' or schedule.schedule_date like '%$keyword%' or schedule.schedule_date='$keyword' )  order by schedule.schedule_date asc";
                             //echo $sqlmain;
                             $insertkey=$keyword;
                             $searchtype="Search Result : ";
@@ -157,7 +157,7 @@
 
                                             for ($y=0;$y<$list11->num_rows;$y++){
                                                 $row00=$list11->fetch_assoc();
-                                                $d=$row00["docname"];
+                                                $d=$row00["doctor_name"];
                                                
                                                 echo "<option value='$d'><br/>";
                                                
@@ -249,13 +249,13 @@
                                         if (!isset($row)){
                                             break;
                                         };
-                                        $scheduleid=$row["scheduleid"];
+                                        $schedule_id=$row["schedule_id"];
                                         $title=$row["title"];
-                                        $docname=$row["docname"];
-                                        $scheduledate=$row["scheduledate"];
-                                        $scheduletime=$row["scheduletime"];
+                                        $doctor_name=$row["doctor_name"];
+                                        $schedule_date=$row["schedule_date"];
+                                        $schedule_time=$row["schedule_time"];
 
-                                        if($scheduleid==""){
+                                        if($schedule_id==""){
                                             break;
                                         }
 
@@ -268,13 +268,13 @@
                                                                 '.substr($title,0,21).'
                                                             </div><br>
                                                             <div class="h3-search">
-                                                                '.substr($docname,0,30).'
+                                                                '.substr($doctor_name,0,30).'
                                                             </div>
                                                             <div class="h4-search">
-                                                                '.$scheduledate.'<br>Starts: <b>@'.substr($scheduletime,0,5).'</b> (24h)
+                                                                '.$schedule_date.'<br>Starts: <b>@'.substr($schedule_time,0,5).'</b> (24h)
                                                             </div>
                                                             <br>
-                                                            <a href="booking.php?id='.$scheduleid.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Cakto Konsultën</font></button></a>
+                                                            <a href="booking.php?id='.$schedule_id.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Cakto Konsultën</font></button></a>
                                                     </div>
                                                             
                                                 </div>
@@ -290,18 +290,18 @@
                                     //     .'</td>
                                         
                                     //     <td style="text-align:center;">
-                                    //         '.substr($scheduledate,0,10).' '.substr($scheduletime,0,5).'
+                                    //         '.substr($schedule_date,0,10).' '.substr($schedule_time,0,5).'
                                     //     </td>
                                     //     <td style="text-align:center;">
-                                    //         '.$nop.'
+                                    //         '.$number_of_patients.'
                                     //     </td>
 
                                     //     <td>
                                     //     <div style="display:flex;justify-content: center;">
                                         
-                                    //     <a href="?action=view&id='.$scheduleid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
+                                    //     <a href="?action=view&id='.$schedule_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
                                     //    &nbsp;&nbsp;&nbsp;
-                                    //    <a href="?action=drop&id='.$scheduleid.'&name='.$title.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel Session</font></button></a>
+                                    //    <a href="?action=drop&id='.$schedule_id.'&name='.$title.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel Session</font></button></a>
                                     //     </div>
                                     //     </td>
                                     // </tr>';

@@ -37,14 +37,14 @@
     
 
     include("../connection.php");
-    $sqlmain= "select * from doctor where docemail=?";
+    $sqlmain= "select * from doctor where doctor_email=?";
     $stmt = $database->prepare($sqlmain);
     $stmt->bind_param("s",$useremail);
     $stmt->execute();
     $userrow = $stmt->get_result();
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["docid"];
-    $username=$userfetch["docname"];
+    $userid= $userfetch["doctor_id"];
+    $username=$userfetch["doctor_name"];
 
 
     ?>
@@ -94,7 +94,7 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings   ">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Rregullime</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Cilësime</p></a></div>
                     </td>
                 </tr>
                 
@@ -109,7 +109,7 @@
                         if(isset($_POST["search"])){
                             $keyword=$_POST["search12"];
                             
-                            $sqlmain= "select * from patient where pemail='$keyword' or pname='$keyword' or pname like '$keyword%' or pname like '%$keyword' or pname like '%$keyword%' ";
+                            $sqlmain= "select * from patient where patient_email='$keyword' or patient_name='$keyword' or patient_name like '$keyword%' or patient_name like '%$keyword' or patient_name like '%$keyword%' ";
                             $selecttype="my";
                         }
                         
@@ -119,13 +119,13 @@
                                 $selecttype="All";
                                 $current="All patients";
                             }else{
-                                $sqlmain= "select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.docid=$userid;";
+                                $sqlmain= "select * from appointment inner join patient on patient.patient_id=appointment.patient_id inner join schedule on schedule.schedule_id=appointment.schedule_id where schedule.doctor_id=$userid;";
                                 $selecttype="My";
                                 $current="My patients Only";
                             }
                         }
                     }else{
-                        $sqlmain= "select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.docid=$userid;";
+                        $sqlmain= "select * from appointment inner join patient on patient.patient_id=appointment.patient_id inner join schedule on schedule.schedule_id=appointment.schedule_id where schedule.doctor_id=$userid;";
                         $selecttype="My";
                     }
 
@@ -149,12 +149,12 @@
                             <?php
                                 echo '<datalist id="patient">';
                                 $list11 = $database->query($sqlmain);
-                               //$list12= $database->query("select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.docid=1;");
+                               //$list12= $database->query("select * from appointment inner join patient on patient.patient_id=appointment.patient_id inner join schedule on schedule.schedule_id=appointment.schedule_id where schedule.doctor_id=1;");
 
                                 for ($y=0;$y<$list11->num_rows;$y++){
                                     $row00=$list11->fetch_assoc();
-                                    $d=$row00["pname"];
-                                    $c=$row00["pemail"];
+                                    $d=$row00["patient_name"];
+                                    $c=$row00["patient_email"];
                                     echo "<option value='$d'><br/>";
                                     echo "<option value='$c'><br/>";
                                 };
@@ -293,12 +293,12 @@
                                 else{
                                 for ( $x=0; $x<$result->num_rows;$x++){
                                     $row=$result->fetch_assoc();
-                                    $pid=$row["pid"];
-                                    $name=$row["pname"];
-                                    $email=$row["pemail"];
-                                    $nic=$row["pnic"];
-                                    $dob=$row["pdob"];
-                                    $tel=$row["ptel"];
+                                    $patient_id=$row["patient_id"];
+                                    $name=$row["patient_name"];
+                                    $email=$row["patient_email"];
+                                    $nic=$row["patient_nic"];
+                                    $dob=$row["patient_birthdate"];
+                                    $tel=$row["patient_phonenumber"];
                                     
                                     echo '<tr>
                                         <td> &nbsp;'.
@@ -319,7 +319,7 @@
                                         <td >
                                         <div style="display:flex;justify-content: center;">
                                         
-                                        <a href="?action=view&id='.$pid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Shfaq</font></button></a>
+                                        <a href="?action=view&id='.$patient_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Shfaq</font></button></a>
                                        
                                         </div>
                                         </td>
@@ -348,18 +348,18 @@
         
             $id=$_GET["id"];
             $action=$_GET["action"];
-            $sqlmain= "select * from patient where pid=?";
+            $sqlmain= "select * from patient where patient_id=?";
             $stmt = $database->prepare($sqlmain);
             $stmt->bind_param("i",$id);
             $stmt->execute();
             $result = $stmt->get_result();
             $row=$result->fetch_assoc();
-            $name=$row["pname"];
-            $email=$row["pemail"];
-            $nic=$row["pnic"];
-            $dob=$row["pdob"];
-            $tele=$row["ptel"];
-            $address=$row["paddress"];
+            $name=$row["patient_name"];
+            $email=$row["patient_email"];
+            $nic=$row["patient_nic"];
+            $dob=$row["patient_birthdate"];
+            $tele=$row["patient_phonenumber"];
+            $address=$row["patient_address"];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">

@@ -24,7 +24,7 @@
     session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='patient'){
             header("location: ../login.php");
         }else{
             $useremail=$_SESSION["user"];
@@ -37,14 +37,14 @@
 
     include("../connection.php");
 
-    $sqlmain= "select * from patient where pemail=?";
+    $sqlmain= "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
     $stmt->bind_param("s",$useremail);
     $stmt->execute();
     $result = $stmt->get_result();
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+    $userid= $userfetch["patient_id"];
+    $username=$userfetch["patient_name"];
 
     date_default_timezone_set('Europe/Tirane');
 
@@ -98,7 +98,7 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-settings">
-                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Rregullime</p></a></div>
+                        <a href="settings.php" class="non-style-link-menu"><div><p class="menu-text">Cilësime</p></a></div>
                     </td>
                 </tr>
                 
@@ -124,7 +124,7 @@
 
                                             for ($y=0;$y<$list11->num_rows;$y++){
                                                 $row00=$list11->fetch_assoc();
-                                                $d=$row00["docname"];
+                                                $d=$row00["doctor_name"];
                                                
                                                 echo "<option value='$d'><br/>";
                                                
@@ -193,27 +193,27 @@
 
                                     $id=$_GET["id"];
 
-                                    $sqlmain= "select * from schedule inner join doctor on schedule.docid=doctor.docid where schedule.scheduleid=? order by schedule.scheduledate desc";
+                                    $sqlmain= "select * from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id where schedule.schedule_id=? order by schedule.schedule_date desc";
                                     $stmt = $database->prepare($sqlmain);
                                     $stmt->bind_param("i", $id);
                                     $stmt->execute();
                                     $result = $stmt->get_result();
                                     $row=$result->fetch_assoc();
-                                    $scheduleid=$row["scheduleid"];
+                                    $schedule_id=$row["schedule_id"];
                                     $title=$row["title"];
-                                    $docname=$row["docname"];
-                                    $docemail=$row["docemail"];
-                                    $scheduledate=$row["scheduledate"];
-                                    $scheduletime=$row["scheduletime"];
-                                    $sql2="select * from appointment where scheduleid=$id";
+                                    $doctor_name=$row["doctor_name"];
+                                    $doctor_email=$row["doctor_email"];
+                                    $schedule_date=$row["schedule_date"];
+                                    $schedule_time=$row["schedule_time"];
+                                    $sql2="select * from appointment where schedule_id=$id";
                                
                                      $result12= $database->query($sql2);
-                                     $apponum=($result12->num_rows)+1;
+                                     $appointment_number=($result12->num_rows)+1;
                                     
                                     echo '
                                         <form action="booking-complete.php" method="post">
-                                            <input type="hidden" name="scheduleid" value="'.$scheduleid.'" >
-                                            <input type="hidden" name="apponum" value="'.$apponum.'" >
+                                            <input type="hidden" name="schedule_id" value="'.$schedule_id.'" >
+                                            <input type="hidden" name="appointment_number" value="'.$appointment_number.'" >
                                             <input type="hidden" name="date" value="'.$today.'" >
 
                                         
@@ -230,16 +230,16 @@
                                                             Session Details
                                                         </div><br><br>
                                                         <div class="h3-search" style="font-size:18px;line-height:30px">
-                                                            Doctor name:  &nbsp;&nbsp;<b>'.$docname.'</b><br>
-                                                            Doctor Email:  &nbsp;&nbsp;<b>'.$docemail.'</b> 
+                                                            Doctor name:  &nbsp;&nbsp;<b>'.$doctor_name.'</b><br>
+                                                            Doctor Email:  &nbsp;&nbsp;<b>'.$doctor_email.'</b> 
                                                         </div>
                                                         <div class="h3-search" style="font-size:18px;">
                                                           
                                                         </div><br>
                                                         <div class="h3-search" style="font-size:18px;">
                                                             Session Title: '.$title.'<br>
-                                                            Session Scheduled Date: '.$scheduledate.'<br>
-                                                            Session Starts : '.$scheduletime.'<br>
+                                                            Session Scheduled Date: '.$schedule_date.'<br>
+                                                            Session Starts : '.$schedule_time.'<br>
                                                             Channeling fee : <b>LKR.2 000.00</b>
 
                                                         </div>
@@ -260,7 +260,7 @@
                                                             Your Appointment Number
                                                         </div>
                                                         <center>
-                                                        <div class=" dashboard-icons" style="margin-left: 0px;width:90%;font-size:70px;font-weight:800;text-align:center;color:var(--btnnictext);background-color: var(--btnice)">'.$apponum.'</div>
+                                                        <div class=" dashboard-icons" style="margin-left: 0px;width:90%;font-size:70px;font-weight:800;text-align:center;color:var(--btnnictext);background-color: var(--btnice)">'.$appointment_number.'</div>
                                                     </center>
                                                        
                                                         </div><br>

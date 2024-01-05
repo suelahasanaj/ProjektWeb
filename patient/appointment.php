@@ -39,14 +39,14 @@
 
     //import database
     include("../connection.php");
-    $sqlmain= "select * from patient where pemail=?";
+    $sqlmain= "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
     $stmt->bind_param("s",$useremail);
     $stmt->execute();
     $userrow = $stmt->get_result();
     $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["pid"];
-    $username=$userfetch["pname"];
+    $userid= $userfetch["patient_id"];
+    $username=$userfetch["patient_name"];
 
 
     //echo $userid;
@@ -54,7 +54,7 @@
 
 
     //TODO
-    $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  patient.pid=$userid ";
+    $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.patient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  where  patient.patient_id=$userid ";
 
     if($_POST){
         //print_r($_POST);
@@ -64,7 +64,7 @@
         
         if(!empty($_POST["sheduledate"])){
             $sheduledate=$_POST["sheduledate"];
-            $sqlmain.=" and schedule.scheduledate='$sheduledate' ";
+            $sqlmain.=" and schedule.schedule_date='$sheduledate' ";
         };
 
     
@@ -73,7 +73,7 @@
 
     }
 
-    $sqlmain.="order by appointment.appodate  asc";
+    $sqlmain.="order by appointment.appointment_date  asc";
     $result= $database->query($sqlmain);
     ?>
     <div class="container">
@@ -249,16 +249,16 @@
                                             if (!isset($row)){
                                             break;
                                             };
-                                            $scheduleid=$row["scheduleid"];
+                                            $schedule_id=$row["schedule_id"];
                                             $title=$row["title"];
-                                            $docname=$row["docname"];
-                                            $scheduledate=$row["scheduledate"];
-                                            $scheduletime=$row["scheduletime"];
-                                            $apponum=$row["apponum"];
-                                            $appodate=$row["appodate"];
-                                            $appoid=$row["appoid"];
+                                            $doctor_name=$row["doctor_name"];
+                                            $schedule_date=$row["schedule_date"];
+                                            $schedule_time=$row["schedule_time"];
+                                            $appointment_number=$row["appointment_number"];
+                                            $appointment_date=$row["appointment_date"];
+                                            $appointment_id=$row["appointment_id"];
     
-                                            if($scheduleid==""){
+                                            if($schedule_id==""){
                                                 break;
                                             }
     
@@ -268,25 +268,25 @@
                                                     
                                                         <div style="width:100%;">
                                                         <div class="h3-search">
-                                                                    Booking Date: '.substr($appodate,0,30).'<br>
-                                                                    Reference Number: OC-000-'.$appoid.'
+                                                                    Booking Date: '.substr($appointment_date,0,30).'<br>
+                                                                    Reference Number: OC-000-'.$appointment_id.'
                                                                 </div>
                                                                 <div class="h1-search">
                                                                     '.substr($title,0,21).'<br>
                                                                 </div>
                                                                 <div class="h3-search">
-                                                                    Appointment Number:<div class="h1-search">0'.$apponum.'</div>
+                                                                    Appointment Number:<div class="h1-search">0'.$appointment_number.'</div>
                                                                 </div>
                                                                 <div class="h3-search">
-                                                                    '.substr($docname,0,30).'
+                                                                    '.substr($doctor_name,0,30).'
                                                                 </div>
                                                                 
                                                                 
                                                                 <div class="h4-search">
-                                                                    Scheduled Date: '.$scheduledate.'<br>Starts: <b>@'.substr($scheduletime,0,5).'</b> (24h)
+                                                                    Scheduled Date: '.$schedule_date.'<br>Starts: <b>@'.substr($schedule_time,0,5).'</b> (24h)
                                                                 </div>
                                                                 <br>
-                                                                <a href="?action=drop&id='.$appoid.'&title='.$title.'&doc='.$docname.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Cancel Booking</font></button></a>
+                                                                <a href="?action=drop&id='.$appointment_id.'&title='.$title.'&doc='.$doctor_name.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Cancel Booking</font></button></a>
                                                         </div>
                                                                 
                                                     </div>
@@ -297,41 +297,41 @@
                            
                                 // for ( $x=0; $x<$result->num_rows;$x++){
                                 //     $row=$result->fetch_assoc();
-                                //     $appoid=$row["appoid"];
-                                //     $scheduleid=$row["scheduleid"];
+                                //     $appointment_id=$row["appointment_id"];
+                                //     $schedule_id=$row["schedule_id"];
                                 //     $title=$row["title"];
-                                //     $docname=$row["docname"];
-                                //     $scheduledate=$row["scheduledate"];
-                                //     $scheduletime=$row["scheduletime"];
-                                //     $pname=$row["pname"];
+                                //     $doctor_name=$row["doctor_name"];
+                                //     $schedule_date=$row["schedule_date"];
+                                //     $schedule_time=$row["schedule_time"];
+                                //     $patient_name=$row["patient_name"];
                                 //     
                                 //     
                                 //     echo '<tr >
                                 //         <td style="font-weight:600;"> &nbsp;'.
                                         
-                                //         substr($pname,0,25)
+                                //         substr($patient_name,0,25)
                                 //         .'</td >
                                 //         <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                //         '.$apponum.'
+                                //         '.$appointment_number.'
                                         
                                 //         </td>
                                 //         <td>
                                 //         '.substr($title,0,15).'
                                 //         </td>
                                 //         <td style="text-align:center;;">
-                                //             '.substr($scheduledate,0,10).' @'.substr($scheduletime,0,5).'
+                                //             '.substr($schedule_date,0,10).' @'.substr($schedule_time,0,5).'
                                 //         </td>
                                         
                                 //         <td style="text-align:center;">
-                                //             '.$appodate.'
+                                //             '.$appointment_date.'
                                 //         </td>
 
                                 //         <td>
                                 //         <div style="display:flex;justify-content: center;">
                                         
-                                //         <!--<a href="?action=view&id='.$appoid.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
+                                //         <!--<a href="?action=view&id='.$appointment_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
                                 //        &nbsp;&nbsp;&nbsp;-->
-                                //        <a href="?action=drop&id='.$appoid.'&name='.$pname.'&session='.$title.'&apponum='.$apponum.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel</font></button></a>
+                                //        <a href="?action=drop&id='.$appointment_id.'&name='.$patient_name.'&session='.$title.'&appointment_number='.$appointment_number.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel</font></button></a>
                                 //        &nbsp;&nbsp;&nbsp;</div>
                                 //         </td>
                                 //     </tr>';
@@ -383,7 +383,7 @@
             ';
         }elseif($action=='drop'){
             $title=$_GET["title"];
-            $docname=$_GET["doc"];
+            $doctor_name=$_GET["doc"];
             
             echo '
             <div id="popup1" class="overlay">
@@ -394,7 +394,7 @@
                         <div class="content">
                             You want to Cancel this Appointment?<br><br>
                             Session Name: &nbsp;<b>'.substr($title,0,40).'</b><br>
-                            Doctor name&nbsp; : <b>'.substr($docname,0,40).'</b><br><br>
+                            Doctor name&nbsp; : <b>'.substr($doctor_name,0,40).'</b><br><br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
@@ -407,25 +407,25 @@
             </div>
             '; 
         }elseif($action=='view'){
-            $sqlmain= "select * from doctor where docid=?";
+            $sqlmain= "select * from doctor where doctor_id=?";
             $stmt = $database->prepare($sqlmain);
             $stmt->bind_param("i",$id);
             $stmt->execute();
             $result = $stmt->get_result();
             $row=$result->fetch_assoc();
-            $name=$row["docname"];
-            $email=$row["docemail"];
+            $name=$row["doctor_name"];
+            $email=$row["doctor_email"];
             $spe=$row["specialties"];
             
-            $sqlmain= "select sname from specialties where id=?";
+            $sqlmain= "select specialty_name from specialties where id=?";
             $stmt = $database->prepare($sqlmain);
             $stmt->bind_param("s",$spe);
             $stmt->execute();
             $spcil_res = $stmt->get_result();
             $spcil_array= $spcil_res->fetch_assoc();
-            $spcil_name=$spcil_array["sname"];
-            $nic=$row['docnic'];
-            $tele=$row['doctel'];
+            $spcil_name=$spcil_array["specialty_name"];
+            $nic=$row['doctor_nic'];
+            $tele=$row['doctor_phonenumber'];
             echo '
             <div id="popup1" class="overlay">
                     <div class="popup">
