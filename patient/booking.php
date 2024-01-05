@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Sessions</title>
+    <title>Seancat e Skeduluara</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -114,7 +114,7 @@
                     <td >
                             <form action="schedule.php" method="post" class="header-search">
 
-                                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Doctor name or Email or Date (YYYY-MM-DD)" list="doctors" >&nbsp;&nbsp;
+                                        <input type="search" name="search" class="input-text header-searchbar" placeholder="Kërkoni emrin e mjekut ose emailin ose datën (VVVV-MM-DD)" list="doctors" >&nbsp;&nbsp;
                                         
                                         <?php
                                             echo '<datalist id="doctors">';
@@ -147,7 +147,7 @@
                     </td>
                     <td width="15%">
                         <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                            Today's Date
+                            Data Sot
                         </p>
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 

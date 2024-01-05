@@ -44,12 +44,14 @@
     
 
     include("../connection.php");
-    $sqlmain= "select * from patient where patient_email=?";
-    $stmt = $database->prepare($sqlmain);
-    $stmt->bind_param("s",$useremail);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $userfetch=$userrow->fetch_assoc();
+    // $sqlmain= "select * from patient where patient_email=?";
+    // $stmt = $database->prepare($sqlmain);
+    // $stmt->bind_param("s",$useremail);
+    // $stmt->execute();
+    // $result = $stmt->get_result();
+    // $userfetch=$userrow->fetch_assoc();
+    $userrow = $database->query("select * from patient where patient_email='$useremail'");
+    $userfetch = $userrow->fetch_assoc();
     $userid= $userfetch["patient_id"];
     $username=$userfetch["patient_name"];
 
@@ -113,7 +115,7 @@
                         <tr >
                             
                         <td width="13%" >
-                    <a href="settings.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                    <a href="settings.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Kthehu</font></button></a>
                     </td>
                     <td>
                         <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Cilësime</p>
@@ -122,7 +124,7 @@
                     
                             <td width="15%">
                                 <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                                    Today's Date
+                                    Data Sot
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
@@ -164,7 +166,7 @@
                                         <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
                                         <div>
                                                 <div class="h1-dashboard">
-                                                    Cilësimet e Profilit  &nbsp;
+                                                    Cilësimet e Profilit
 
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px;">
@@ -185,19 +187,18 @@
                             <tr>
                             <td style="width: 25%;">
                                     <a href="?action=view&id=<?php echo $userid ?>" class="non-style-link">
-                                    <div  class="dashboard-items setting-tabs"  style="padding:20px;margin:auto;width:95%;display: flex;">
-                                        <div class="btn-icon-back dashboard-icons-setting " style="background-image: url('../img/icons/view-iceblue.svg');"></div>
-                                        <div>
-                                                <div class="h1-dashboard" >
-                                                    Shfaq Detajet e Llogarisë 
-                                                    
-                                                </div><br>
-                                                <div class="h3-dashboard"  style="font-size: 15px;">
-                                                    Shfaq Informacion Personal për Llogarinë Tënde
-                                                </div>
-                                        </div>
+                                        <div  class="dashboard-items setting-tabs"  style="padding:20px;margin:auto;width:95%;display: flex;">
+                                             <div class="btn-icon-back dashboard-icons-setting " style="background-image: url('../img/icons/view-iceblue.svg');"></div>
+                                                <div>
+                                                    <div class="h1-dashboard" >
+                                                     Shfaq Detajet e Llogarisë
+                                                    </div><br>
+                                                    <div class="h3-dashboard"  style="font-size: 15px;">
+                                                        Shfaq Informacion Personal për Llogarinë Tënde
+                                                    </div>
+                                             </div>
                                                 
-                                    </div>
+                                        </div>
                                     </a>
                                 </td>
                                 
