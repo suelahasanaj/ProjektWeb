@@ -397,7 +397,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="number_of_patients" class="form-label">Number of Patients/Appointment Numbers : </label>
+                                    <label for="number_of_patients" class="form-label">Number of Patients/Numri i Konsultëss : </label>
                                 </td>
                             </tr>
                             <tr>

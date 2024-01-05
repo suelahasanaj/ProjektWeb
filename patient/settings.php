@@ -10,7 +10,7 @@
         
 
 
-    <title>Settings</title>
+    <title>Cilësime</title>
     <style>
         .dashbord-tables{
             animation: transitionIn-Y-over 0.5s;
@@ -126,7 +126,7 @@
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
-                                date_default_timezone_set('Asia/Kolkata');
+                                date_default_timezone_set('Europe/Tirane');
         
                                 $today = date('Y-m-d');
                                 echo $today;
@@ -283,7 +283,7 @@
                         <h2></h2>
                         <a class="close" href="settings.php">&times;</a>
                         <div class="content">
-                            eDoc Web App<br>
+                            DoktoriOnline.<br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">

@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
 
 -- Marrja e te dhenave per tabelen 'schedule'
 INSERT INTO `schedule` (`schedule_id`, `doctor_id`, `title_of_schedule`, `schedule_date`, `schedule_time`, `number_of_patients`) VALUES
-(1, '1', 'Test Session', '2024-01-01', '18:00:00', 3),
+(1, '1', 'Seanca Test', '2024-01-01', '18:00:00', 3),
 (2, '2', '1', '2024-01-10', '20:36:00', 1),
 (3, '1', '12', '2024-01-10', '20:33:00', 1),
 (4, '2', '1', '2024-01-12', '12:32:00', 2),

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Appointments</title>
+    <title>Konsultat</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -21,8 +21,7 @@
 <body>
     <?php
 
-    //learn from w3schools.com
-
+    
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -37,7 +36,6 @@
     }
     
 
-    //import database
     include("../connection.php");
     $sqlmain= "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
@@ -53,7 +51,7 @@
     //echo $username;
 
 
-    //TODO
+
     $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  where  patient.patient_id=$userid ";
 
     if($_POST){
@@ -61,7 +59,6 @@
         
 
 
-        
         if(!empty($_POST["sheduledate"])){
             $sheduledate=$_POST["sheduledate"];
             $sqlmain.=" and schedule.schedule_date='$sheduledate' ";
@@ -93,7 +90,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                    <a href="../logout.php" ><input type="button" value="Dil" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -101,23 +98,23 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-home" >
-                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Home</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Kreu</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor">
-                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">All Doctors</p></a></div>
+                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">Lista e Doktorëve</p></a></div>
                     </td>
                 </tr>
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Seancat e Skeduluara</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-appoinment  menu-active menu-icon-appoinment-active">
-                        <a href="appointment.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">My Bookings</p></a></div>
+                        <a href="appointment.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Konsultat e Mia</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
@@ -135,7 +132,7 @@
                     <a href="appointment.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
                     </td>
                     <td>
-                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">My Bookings history</p>
+                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Konsultat e Mia history</p>
                                            
                     </td>
                     <td width="15%">
@@ -145,7 +142,7 @@
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
 
-                        date_default_timezone_set('Asia/Kolkata');
+                        date_default_timezone_set('Europe/Tirane');
 
                         $today = date('Y-m-d');
                         echo $today;
@@ -173,7 +170,7 @@
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;" >
                     
-                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">My Bookings (<?php echo $result->num_rows; ?>)</p>
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Konsultat e Mia (<?php echo $result->num_rows; ?>)</p>
                     </td>
                     
                 </tr>
@@ -268,14 +265,14 @@
                                                     
                                                         <div style="width:100%;">
                                                         <div class="h3-search">
-                                                                    Booking Date: '.substr($appointment_date,0,30).'<br>
-                                                                    Reference Number: OC-000-'.$appointment_id.'
+                                                                    Data e Konsultës: '.substr($appointment_date,0,30).'<br>
+                                                                    Numri i Referencës : OC-000-'.$appointment_id.'
                                                                 </div>
                                                                 <div class="h1-search">
                                                                     '.substr($title,0,21).'<br>
                                                                 </div>
                                                                 <div class="h3-search">
-                                                                    Appointment Number:<div class="h1-search">0'.$appointment_number.'</div>
+                                                                    Numri i Konsultës:<div class="h1-search">0'.$appointment_number.'</div>
                                                                 </div>
                                                                 <div class="h3-search">
                                                                     '.substr($doctor_name,0,30).'
@@ -283,7 +280,7 @@
                                                                 
                                                                 
                                                                 <div class="h4-search">
-                                                                    Scheduled Date: '.$schedule_date.'<br>Starts: <b>@'.substr($schedule_time,0,5).'</b> (24h)
+                                                                    Data e Skeduluar: '.$schedule_date.'<br>Fillon në: <b>@'.substr($schedule_time,0,5).'</b> (24h)
                                                                 </div>
                                                                 <br>
                                                                 <a href="?action=drop&id='.$appointment_id.'&title='.$title.'&doc='.$doctor_name.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Cancel Booking</font></button></a>
@@ -369,7 +366,7 @@
                         <h2>Booking Successfully.</h2>
                         <a class="close" href="appointment.php">&times;</a>
                         <div class="content">
-                        Your Appointment number is '.$id.'.<br><br>
+                        Your Numri i Konsultës is '.$id.'.<br><br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">

@@ -79,7 +79,7 @@
                  </td>
              </tr>
              <tr class="menu-row" >
-                    <td class="menu-btn menu-icon-home " >
+                    <td class="menu-btn menu-icon-Kreu " >
                         <a href="index.php" class="non-style-link-menu "><div><p class="menu-text">Kreu</p></a></div></a>
                     </td>
                 </tr>
@@ -271,7 +271,7 @@
                                                                 '.substr($doctor_name,0,30).'
                                                             </div>
                                                             <div class="h4-search">
-                                                                '.$schedule_date.'<br>Starts: <b>@'.substr($schedule_time,0,5).'</b> (24h)
+                                                                '.$schedule_date.'<br>Fillon në: <b>@'.substr($schedule_time,0,5).'</b> (24h)
                                                             </div>
                                                             <br>
                                                             <a href="booking.php?id='.$schedule_id.'" ><button  class="login-btn btn-primary-soft btn "  style="padding-top:11px;padding-bottom:11px;width:100%"><font class="tn-in-text">Cakto Konsultën</font></button></a>

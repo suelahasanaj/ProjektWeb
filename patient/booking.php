@@ -167,7 +167,7 @@
                 
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;" >
-                        <!-- <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49);font-weight:400;">Scheduled Sessions / Booking / <b>Review Booking</b></p> -->
+                        <!-- <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49);font-weight:400;">Seancat e Skeduluara / Booking / <b>Review Booking</b></p> -->
                         
                     </td>
                     
@@ -238,8 +238,8 @@
                                                         </div><br>
                                                         <div class="h3-search" style="font-size:18px;">
                                                             Session Title: '.$title.'<br>
-                                                            Session Scheduled Date: '.$schedule_date.'<br>
-                                                            Session Starts : '.$schedule_time.'<br>
+                                                            Session Data e Skeduluar: '.$schedule_date.'<br>
+                                                            Session Fillon në : '.$schedule_time.'<br>
                                                             Channeling fee : <b>LKR.2 000.00</b>
 
                                                         </div>
@@ -257,7 +257,7 @@
                                             
                                                 <div style="width:100%;padding-top: 15px;padding-bottom: 15px;">
                                                         <div class="h1-search" style="font-size:20px;line-height: 35px;margin-left:8px;text-align:center;">
-                                                            Your Appointment Number
+                                                            Your Numri i Konsultës
                                                         </div>
                                                         <center>
                                                         <div class=" dashboard-icons" style="margin-left: 0px;width:90%;font-size:70px;font-weight:800;text-align:center;color:var(--btnnictext);background-color: var(--btnice)">'.$appointment_number.'</div>
