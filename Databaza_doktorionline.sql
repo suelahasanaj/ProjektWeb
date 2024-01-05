@@ -1,4 +1,4 @@
---Databaza doktorionline.sql
+-- Databaza doktorionline.sql
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -10,9 +10,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `admin_email` varchar(255) NOT NULL,
   `admin_password` varchar(255) DEFAULT NULL, 
   PRIMARY KEY (`admin_email`)
-); --ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); -- ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---Marrja e te dhenave per tabelen 'admin' 
+-- Marrja e te dhenave per tabelen 'admin' 
 INSERT INTO `admin` (`admin_email`, `admin_password`) VALUES
 ('admin@gamil.com', '2003!');
 
@@ -27,9 +27,9 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   PRIMARY KEY (`appointment_id`),
   KEY `patient_id` (`pacient_id`),
   KEY `schedule_id` (`schedule_id`)
-); --ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+); -- ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---Marrja e te dhenave per tabelen 'appointment'
+-- Marrja e te dhenave per tabelen 'appointment'
 INSERT INTO `appointment` (`appointment_id`, `pacient_id`, `appointment_number`, `schedule_id`, `appointment_date`) VALUES
 (1, 1, 1, 1, '2024-01-03');
 
@@ -45,9 +45,9 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `specialty` int(2) DEFAULT NULL,
   PRIMARY KEY (`doctor_id`),
   KEY `specialty` (`specialty`)
-); --ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+); -- ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
---Marrja e te dhenave per tabelen 'doctor'
+-- Marrja e te dhenave per tabelen 'doctor'
 INSERT INTO `doctor` (`doctor_id`, `doctor_email`, `doctor_name`, `doctor_password`, `doctor_nic`, `doctor_phonenumber`, `specialty`) VALUES
 (1, 'doctor@gmail.com', 'Test Doctor', '2000!', '000000010', '+355683612000', 1),
 (2, 'fredtomson@gmail.com', 'Fred Tomson', 'Fred1980!', '000000011', '+355683612445', 7),
@@ -68,9 +68,9 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `patient_birthdate` date DEFAULT NULL,
   `patient_phonenumber` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`patient_id`)
-); --ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+); -- ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
---Marrja e te dhenave per tabelen 'patient'
+-- Marrja e te dhenave per tabelen 'patient'
 INSERT INTO `patient` (`patient_id`, `patient_email`, `patient_name`, `patient_password`, `patient_address`, `patient_nic`, `patient_birthdate`, `patient_phonenumber`) VALUES
 (1, 'patient@gmail.com', 'Test Patient', '123', 'Tirana 1050', '0100000010', '2000-01-01', '+355693512311'),
 (2, 'suelahasanaj9@gmail.com', 'Suela Hasanaj', 'Suela2003', 'Tirana 1010', '0110000000', '2003-03-25', '+3553612010');
@@ -86,9 +86,9 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `number_of_patients` int(4) DEFAULT NULL,
   PRIMARY KEY (`schedule_id`),
   KEY `doctor_id` (`doctor_id`)
-); --ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+); -- ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
---Marrja e te dhenave per tabelen 'schedule'
+-- Marrja e te dhenave per tabelen 'schedule'
 INSERT INTO `schedule` (`schedule_id`, `doctor_id`, `title_of_schedule`, `schedule_date`, `schedule_time`, `number_of_patients`) VALUES
 (1, '1', 'Test Session', '2024-01-01', '18:00:00', 3),
 (2, '2', '1', '2024-01-10', '20:36:00', 1),
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `specialties` (
   PRIMARY KEY (`id`)
 );-- ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---Marrja e te dhenave per tabelen 'specialties'
+-- Marrja e te dhenave per tabelen 'specialties'
 INSERT INTO `specialties` (`id`, `specialty_name`) VALUES
 (1, 'Mjekësi e aksidenteve dhe emergjencave'),
 (2, 'Alergologji'),
@@ -146,9 +146,9 @@ CREATE TABLE IF NOT EXISTS `webuser` (
   `email` varchar(255) NOT NULL,
   `usertype` char(1) DEFAULT NULL,
   PRIMARY KEY (`email`)
-); --ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); -- ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---Marrja e te dhenave per tabelen 'webuser'
+-- Marrja e te dhenave per tabelen 'webuser'
 INSERT INTO `webuser` (`email`, `usertype`) VALUES
 ('admin@gmail.com', 'admin'),
 ('doctor@gmail.com', 'doctor'),
