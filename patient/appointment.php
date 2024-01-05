@@ -54,7 +54,7 @@
 
 
     //TODO
-    $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.patient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  where  patient.patient_id=$userid ";
+    $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  where  patient.patient_id=$userid ";
 
     if($_POST){
         //print_r($_POST);
@@ -250,7 +250,7 @@
                                             break;
                                             };
                                             $schedule_id=$row["schedule_id"];
-                                            $title=$row["title"];
+                                            $title=$row["title_of_schedule"];
                                             $doctor_name=$row["doctor_name"];
                                             $schedule_date=$row["schedule_date"];
                                             $schedule_time=$row["schedule_time"];

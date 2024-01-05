@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Doctors</title>
+    <title>Doktorët</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -59,7 +59,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                <a href="../logout.php" ><input type="button" value="Log out" class="logout-btn btn-primary-soft btn"></a>
+                                <a href="../logout.php" ><input type="button" value="Dil" class="logout-btn btn-primary-soft btn"></a>
                                 </td>
                             </tr>
                     </table>
@@ -79,7 +79,7 @@
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-session">
-                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Scheduled Sessions</p></div></a>
+                        <a href="schedule.php" class="non-style-link-menu"><div><p class="menu-text">Seancat e Skeduluara</p></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row" >
@@ -99,7 +99,7 @@
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
                 <tr >
                     <td width="13%">
-                        <a href="doctors.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Back</font></button></a>
+                        <a href="doctors.php" ><button  class="login-btn btn-primary-soft btn btn-icon-back"  style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px"><font class="tn-in-text">Kthehu</font></button></a>
                     </td>
                     <td>
                         
@@ -219,7 +219,7 @@
                                     $doctor_id=$row["doctor_id"];
                                     $name=$row["doctor_name"];
                                     $email=$row["doctor_email"];
-                                    $spe=$row["specialties"];
+                                    $spe=$row["specialty"];
                                     $spcil_res= $database->query("select specialty_name from specialties where id='$spe'");
                                     $spcil_array= $spcil_res->fetch_assoc();
                                     $spcil_name=$spcil_array["specialty_name"];
@@ -298,7 +298,7 @@
 
             $name=$row["doctor_name"];
             $email=$row["doctor_email"];
-            $spe=$row["specialties"];
+            $spe=$row["specialty"];
             
             $stmt = $database->prepare("select specialty_name from specialties where id=?");
             $stmt->bind_param("s",$spe);
@@ -314,9 +314,6 @@
                     <center>
                         <h2></h2>
                         <a class="close" href="doctors.php">&times;</a>
-                        <div class="content">
-                            Aplikacioni Web i Doktorit Online<br>
-                        </div>
 
                         <div style="display: flex;justify-content: center;">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
@@ -416,7 +413,7 @@
                                 
                         <div style="display: flex;justify-content:center;margin-left:45%;margin-top:6%;;margin-bottom:6%;">
                         
-                        <input type="submit"  value="Yes" class="btn-primary btn"   >
+                        <input type="submit"  value="Po" class="btn-primary btn"   >
                         
                         
                         </div>
@@ -435,7 +432,7 @@
        
             $name=$row["doctor_name"];
             $email=$row["doctor_email"];
-            $spe=$row["specialties"];
+            $spe=$row["specialty"];
             
             $sqlmain= "select specialty_name from specialties where id='?";
             $stmt = $database->prepare($sqlmain);
@@ -450,8 +447,8 @@
 
             $error_1=$_GET["error"];
                 $errorlist= array(
-                    '1'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Already have an account for this Email address.</label>',
-                    '2'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Password Conformation Error! Reconform Password</label>',
+                    '1'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Tashmë keni një llogari për këtë adresë emaili.</label>',
+                    '2'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Gabim në konformimin e fjalëkalimit! Rikonformo fjalëkalimin</label>',
                     '3'=>'<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;"></label>',
                     '4'=>"",
                     '0'=>'',

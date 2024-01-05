@@ -64,7 +64,7 @@
                     header('location: admin/index.php');
 
                 }else{
-                    $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Wrong credentials: Invalid email or password</label>';
+                    $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Të dhënat e gabuara: Email-i ose fjalëkalimi nuk përputhet!</label>';
                 }
 
 
@@ -79,13 +79,13 @@
                     header('location: doctor/index.php');
 
                 }else{
-                    $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Wrong credentials: Invalid email or password</label>';
+                    $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Të dhënat e gabuara: Email-i ose fjalëkalimi nuk përputhet!</label>';
                 }
 
             }
             
         }else{
-            $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">We cant found any acount for this email.</label>';
+            $error='<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Nuk mund të gjejmë asnjë llogari për këtë email.</label>';
         }
 
 
@@ -118,7 +118,7 @@
                     <p class="sub-text">Logohu me detajet e tua për të vazhduar.</p>
                 </td>
             </tr>
-            <tr>Login
+            <tr>
                 <form action="" method="POST" >
                 <td class="label-td">
                     <label for="useremail" class="form-label">Email-i: </label>
