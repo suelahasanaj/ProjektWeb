@@ -176,9 +176,7 @@
                             <tr>
                                 <td>
                                     <p style="padding:10px;padding-left:48px;padding-bottom:0;font-size:23px;font-weight:700;color:var(--primarycolor);">
-                                        Takimet e ardhshme deri ne datë <?php  
-                                        echo date("l",strtotime("+1 week"));
-                                        ?>
+                                        Takimet e ardhshme për 7 ditët në vijim
                                     </p>
                                     <p style="padding-bottom:19px;padding-left:50px;font-size:15px;font-weight:500;color:#212529e3;line-height: 20px;">
                                         Këtu gjeni akses të takimeve të ardhshme deri në 7 ditë<br>
@@ -188,9 +186,7 @@
                                 </td>
                                 <td>
                                     <p style="text-align:right;padding:10px;padding-right:48px;padding-bottom:0;font-size:23px;font-weight:700;color:var(--primarycolor);">
-                                        Sesionet e ardhshme deri në datë <?php  
-                                        echo date("l",strtotime("+1 week"));
-                                        ?>
+                                        Sesionet e ardhshme për 7 ditët në vijim
                                     </p>
                                     <p style="padding-bottom:19px;text-align:right;padding-right:50px;font-size:15px;font-weight:500;color:#212529e3;line-height: 20px;">
                                         Këtu gjeni akses të sesioneve të ardhshme të skeduluara deri në 7 ditë<br>
