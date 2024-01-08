@@ -23,7 +23,7 @@
     session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='admin'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
             header("location: ../login.php");
         }
 
@@ -230,7 +230,7 @@
                                     $name=$row["patient_name"];
                                     $email=$row["patient_email"];
                                     $nic=$row["patient_nic"];
-                                    $dob=$row["patient_date_of_birth"];
+                                    $dob=$row["patient_birthdate"];
                                     $tel=$row["patient_phonenumber"];
                                     
                                     echo '<tr>
@@ -287,7 +287,7 @@
             $name=$row["patient_name"];
             $email=$row["patient_email"];
             $nic=$row["patient_nic"];
-            $dob=$row["patient_date_of_birth"];
+            $dob=$row["patient_birthdate"];
             $tele=$row["patient_phonenumber"];
             $address=$row["patient_address"];
             echo '

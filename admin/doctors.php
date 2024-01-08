@@ -23,7 +23,7 @@
     session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='admin'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
             header("location: ../login.php");
         }
 
@@ -224,7 +224,7 @@
                                     $doctor_id=$row["doctor_id"];
                                     $name=$row["doctor_name"];
                                     $email=$row["doctor_email"];
-                                    $spe=$row["specialties"];
+                                    $spe=$row["specialty"];
                                     $spcil_res= $database->query("select specialty_name from specialties where id='$spe'");
                                     $spcil_array= $spcil_res->fetch_assoc();
                                     $spcil_name=$spcil_array["specialty_name"];

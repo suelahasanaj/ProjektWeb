@@ -23,7 +23,7 @@
     session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='admin'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
             header("location: ../login.php");
         }
 
@@ -504,7 +504,7 @@
             $number_of_patients=$row['number_of_patients'];
 
 
-            $sqlmain12= "select * from appointment inner join patient on patient.patient_id=appointment.patient_id inner join schedule on schedule.schedule_id=appointment.schedule_id where schedule.schedule_id=$id;";
+            $sqlmain12= "select * from appointment inner join patient on patient.patient_id=appointment.pacient_id inner join schedule on schedule.schedule_id=appointment.schedule_id where schedule.schedule_id=$id;";
             $result12= $database->query($sqlmain12);
             echo '
             <div id="popup1" class="overlay">
