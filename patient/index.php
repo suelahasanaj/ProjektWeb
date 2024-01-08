@@ -341,7 +341,7 @@
                                                 for ( $x=0; $x<$result->num_rows;$x++){
                                                     $row=$result->fetch_assoc();
                                                     $schedule_id=$row["schedule_id"];
-                                                    $title=$row["title"];
+                                                    $title=$row["title_of_schedule"];
                                                     $appointment_number=$row["appointment_number"];
                                                     $doctor_name=$row["doctor_name"];
                                                     $schedule_date=$row["schedule_date"];

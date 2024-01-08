@@ -166,14 +166,14 @@
                                         <div class="btn-icon-back dashboard-icons-setting" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
                                         <div>
                                                 <div class="h1-dashboard">
-                                                    Cilësimet e Profilit
+                                                    Cilësimet e Profilit &nbsp;
 
                                                 </div><br>
                                                 <div class="h3-dashboard" style="font-size: 15px;">
                                                    Ndrysho Detajet e Profilit & Fjalëkalimin 
+                                                </div>        
                                         </div>
-                                                
-                                    </div>
+                                    </div>    
                                     </a>
                                 </td>
                                 
