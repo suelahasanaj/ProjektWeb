@@ -10,11 +10,11 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `admin_email` varchar(255) NOT NULL,
   `admin_password` varchar(255) DEFAULT NULL, 
   PRIMARY KEY (`admin_email`)
-); -- ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); 
 
 -- Marrja e te dhenave per tabelen 'admin' 
 INSERT INTO `admin` (`admin_email`, `admin_password`) VALUES
-('admin@gamil.com', '2003!');
+('admin@gmail.com', '2003!');
 
 -- Krijimi i tabeles 'appointment'
 DROP TABLE IF EXISTS `appointment`;
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `appointment` (
   PRIMARY KEY (`appointment_id`),
   KEY `patient_id` (`pacient_id`),
   KEY `schedule_id` (`schedule_id`)
-); -- ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+); 
 
 -- Marrja e te dhenave per tabelen 'appointment'
 INSERT INTO `appointment` (`appointment_id`, `pacient_id`, `appointment_number`, `schedule_id`, `appointment_date`) VALUES
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `specialty` int(2) DEFAULT NULL,
   PRIMARY KEY (`doctor_id`),
   KEY `specialty` (`specialty`)
-); -- ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+); 
 
 -- Marrja e te dhenave per tabelen 'doctor'
 INSERT INTO `doctor` (`doctor_id`, `doctor_email`, `doctor_name`, `doctor_password`, `doctor_nic`, `doctor_phonenumber`, `specialty`) VALUES
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `patient` (
   `patient_birthdate` date DEFAULT NULL,
   `patient_phonenumber` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`patient_id`)
-); -- ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+);
 
 -- Marrja e te dhenave per tabelen 'patient'
 INSERT INTO `patient` (`patient_id`, `patient_email`, `patient_name`, `patient_password`, `patient_address`, `patient_nic`, `patient_birthdate`, `patient_phonenumber`) VALUES
@@ -86,7 +86,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
   `number_of_patients` int(4) DEFAULT NULL,
   PRIMARY KEY (`schedule_id`),
   KEY `doctor_id` (`doctor_id`)
-); -- ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+); 
 
 -- Marrja e te dhenave per tabelen 'schedule'
 INSERT INTO `schedule` (`schedule_id`, `doctor_id`, `title_of_schedule`, `schedule_date`, `schedule_time`, `number_of_patients`) VALUES
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `specialties` (
   `id` int(2) NOT NULL,
   `specialty_name` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-);-- ENGINE=MyISAM DEFAULT CHARSET=latin1;
+);
 
 -- Marrja e te dhenave per tabelen 'specialties'
 INSERT INTO `specialties` (`id`, `specialty_name`) VALUES
@@ -146,12 +146,12 @@ CREATE TABLE IF NOT EXISTS `webuser` (
   `email` varchar(255) NOT NULL,
   `usertype` char(1) DEFAULT NULL,
   PRIMARY KEY (`email`)
-); -- ENGINE=MyISAM DEFAULT CHARSET=latin1;
+); 
 
 -- Marrja e te dhenave per tabelen 'webuser'
 INSERT INTO `webuser` (`email`, `usertype`) VALUES
-('admin@gmail.com', 'admin'),
-('doctor@gmail.com', 'doctor'),
-('patient@gmail.com', 'patient'),
-('suelahasanaj@gmail.com', 'patient');
+('admin@gmail.com', 'a'),
+('doctor@gmail.com', 'd'),
+('patient@gmail.com', 'p'),
+('suelahasanaj@gmail.com', 'p');
 COMMIT;
