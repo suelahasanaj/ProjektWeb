@@ -193,13 +193,13 @@
                         }
 
                         $sqlpt2="";
-                        if(!empty($_POST["doctor"])){
-                            $doctor=$_POST["doctor"];
-                            $sqlpt2=" doctor.doctor=$doctor ";
+                        if(!empty($_POST["doctor_id"])){
+                            $doctor=$_POST["doctor_id"];
+                            $sqlpt2=" doctor.doctor_id=$doctor ";
                         }
                         //echo $sqlpt2;
                         //echo $sqlpt1;
-                        $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.patient_id inner join doctor on schedule.doctor=doctor.doctor";
+                        $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id";
                         $sqllist=array($sqlpt1,$sqlpt2);
                         $sqlkeywords=array(" where "," and ");
                         $key2=0;
@@ -213,7 +213,7 @@
                         //echo $sqlmain;
                         //
                     }else{
-                        $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.patient_id inner join doctor on schedule.doctor=doctor.doctor  order by schedule.schedule_date desc";
+                        $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  order by schedule.schedule_date desc";
 
                     }
                 ?>
@@ -512,7 +512,7 @@
             $row=$result->fetch_assoc();
             $name=$row["doctor_name"];
             $email=$row["doctor_email"];
-            $spe=$row["specialties"];
+            $spe=$row["specialty"];
             
             $spcil_res= $database->query("select specialty_name from specialties where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();

@@ -24,7 +24,7 @@
     session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='patient'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
             header("location: ../login.php");
         }else{
             $useremail=$_SESSION["user"];
@@ -37,14 +37,20 @@
 
     include("../connection.php");
 
-    $sqlmain= "select * from patient where patient_email=?";
-    $stmt = $database->prepare($sqlmain);
-    $stmt->bind_param("s",$useremail);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $userfetch=$userrow->fetch_assoc();
-    $userid= $userfetch["patient_id"];
-    $username=$userfetch["patient_name"];
+    // $sqlmain= "select * from patient where patient_email=?";
+    // $stmt = $database->prepare($sqlmain);
+    // $stmt->bind_param("s",$useremail);
+    // $stmt->execute();
+    // $result = $stmt->get_result();
+    // $userfetch=$userrow->fetch_assoc();
+    // $userid= $userfetch["patient_id"];
+    // $username=$userfetch["patient_name"];
+
+
+    $userrow = $database->query("select * from patient where patient_email='$useremail'");
+    $userfetch = $userrow->fetch_assoc();
+    $userid = $userfetch["patient_id"];
+    $username = $userfetch["patient_name"];
 
     date_default_timezone_set('Europe/Tirane');
 

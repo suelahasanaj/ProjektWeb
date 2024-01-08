@@ -21,7 +21,7 @@
 session_start();
 
     if(isset($_SESSION["user"])){ // kontrollojme nese eshte krijuar session per userin
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='admin'){  // nese useri eshte bosh ose nuk eshte admin ridrejtoje ne login
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){  // nese useri eshte bosh ose nuk eshte admin ridrejtoje ne login
             header("location: ../login.php");
         }
     }else{

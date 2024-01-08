@@ -2,7 +2,7 @@
 session_start();
 
     if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='admin'){
+        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
             header("location: ../login.php");
         }
 
@@ -13,7 +13,7 @@ session_start();
     
     if($_POST){ // nese eshte shtypur butoni submit
         include("../connection.php");
-        $title=$_POST["title"];
+        $title=$_POST["title_of_schedule"];
         $doctor_id=$_POST["doctor_id"];
         $number_of_patients=$_POST["number_of_patients"];
         $date=$_POST["date"];

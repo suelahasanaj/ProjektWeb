@@ -35,7 +35,7 @@
             }else{
 
                 //$sql1="insert into doctor(doctor_email,doctor_name,doctor_password,doctor_nic,doctor_phonenumber,specialties) values('$email','$name','$password','$nic','$tele',$spec);";
-                $sql1="update doctor set doctor_email='$email',doctor_name='$name',doctor_password='$password',doctor_nic='$nic',doctor_phonenumber='$tele',specialties=$spec where doctor_id=$id ;";
+                $sql1="update doctor set doctor_email='$email',doctor_name='$name',doctor_password='$password',doctor_nic='$nic',doctor_phonenumber='$tele',specialty=$spec where doctor_id=$id ;";
                 $database->query($sql1);
                 
                 $sql1="update webuser set email='$email' where email='$oldemail' ;";

@@ -300,7 +300,7 @@
             $row=$result->fetch_assoc();
             $name=$row["doctor_name"];
             $email=$row["doctor_email"];
-            $spe=$row["specialties"];
+            $spe=$row["specialty"];
             
             $spcil_res= $database->query("select specialty_name from specialties where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
@@ -565,7 +565,7 @@
             $row=$result->fetch_assoc();
             $name=$row["doctor_name"];
             $email=$row["doctor_email"];
-            $spe=$row["specialties"];
+            $spe=$row["specialty"];
             
             $spcil_res= $database->query("select specialty_name from specialties where id='$spe'");
             $spcil_array= $spcil_res->fetch_assoc();
