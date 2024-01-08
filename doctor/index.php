@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Grafikë</title>
+    <title>Grafika Informative</title>
     <style>
         .dashbord-tables,.doctor-heade{
             animation: transitionIn-Y-over 0.5s;
@@ -80,7 +80,7 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-dashbord menu-active menu-icon-dashbord-active" >
-                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Grafikë</p></a></div></a>
+                        <a href="index.php" class="non-style-link-menu non-style-link-menu-active"><div><p class="menu-text">Grafika Informative</p></a></div></a>
                     </td>
                 </tr>
                 <tr class="menu-row">
@@ -113,7 +113,7 @@
                         <tr >
                             
                             <td colspan="1" class="nav-bar" >
-                            <p style="font-size: 23px;padding-left:12px;font-weight: 600;margin-left:20px;">     Grafikë</p>
+                            <p style="font-size: 23px;padding-left:12px;font-weight: 600;margin-left:20px;">Grafika Informative</p>
                           
                             </td>
                             <td width="25%">
@@ -250,8 +250,6 @@
 
                                 </td>
                                 <td>
-
-
                             
                                     <p id="anim" style="font-size: 20px;font-weight:600;padding-left: 40px;">Seancat tuaja të ardhshme deri në javën tjetër</p>
                                     <center>
