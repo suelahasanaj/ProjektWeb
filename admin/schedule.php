@@ -457,7 +457,7 @@
                         <h2>Sesioni i kryer.</h2>
                         <a class="close" href="schedule.php">&times;</a>
                         <div class="content">
-                        '.substr($titleget,0,40).' was scheduled.<br><br>
+                        '.substr($titleget,0,40).' U skedulua.<br><br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
