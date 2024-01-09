@@ -266,8 +266,8 @@
                                     <img src="../img/notfound.svg" width="25%">
                                     
                                     <br>
-                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                    <a class="non-style-link" href="patient.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Patients &nbsp;</font></button>
+                                    <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nuk gjetëm asgjë në lidhje me fjalët tuaja kyçe!</p>
+                                    <a class="non-style-link" href="patient.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Trego të gjithë pacientët &nbsp;</font></button>
                                     </a>
                                     </center>
                                     <br><br><br><br>
@@ -344,13 +344,11 @@
             $address=$row["patient_address"];
             echo '
             <div id="popup1" class="overlay">
-                    <div class="popup">
+                    <div class="popup" style="width:60%">
                     <center>
                         <a class="close" href="patient.php">&times;</a>
-                        <div class="content">
-
-                        </div>
-                        <div style="display: flex;justify-content: center;">
+                        
+                        <div class="abc scroll" style="display: flex;justify-content: center;">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
                         
                             <tr>

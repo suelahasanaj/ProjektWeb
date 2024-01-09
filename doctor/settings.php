@@ -245,9 +245,9 @@
         if($action=='drop'){
             $nameget=$_GET["name"];
             echo '
-            <div id="popup1" class="overlay">
-                    <div class="popup">
-                    <center>
+                    <div id="popup1" class="overlay">
+                        <div class="popup">
+                        <center>
                         <h2>A je i sigurt?</h2>
                         <a class="close" href="settings.php">&times;</a>
                         <div class="content">
@@ -256,13 +256,13 @@
                         </div>
                         <div style="display: flex;justify-content: center;">
                         <a href="delete-doctor.php?id='.$id.'" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Po&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
-                        <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;Jo&nbsp;&nbsp;</font></button></a>
+                        <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;Jo&nbsp;</font></button></a>
 
                         </div>
-                    </center>
-            </div>
-            </div>
-            ';
+                        </center>
+                        </div>
+                    </div>
+                ';
         }elseif($action=='view'){
             $sqlmain= "select * from doctor where doctor_id='$id'";
             $result= $database->query($sqlmain);
@@ -280,10 +280,10 @@
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
-                        <h2></h2>
+                        
                         <a class="close" href="settings.php">&times;</a>
                        
-                        <div style="display: flex;justify-content: center;">
+                        <div class="abc scroll" style="display: flex;justify-content: center;">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
                         
                             <tr>
