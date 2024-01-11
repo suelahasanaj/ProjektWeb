@@ -18,20 +18,10 @@
 <body>
 
 <?php
-session_start();
-
-    if(isset($_SESSION["user"])){ // kontrollojme nese eshte krijuar session per userin
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){  // nese useri eshte bosh ose nuk eshte admin ridrejtoje ne login
-            header("location: ../login.php");
-        }
-    }else{
-        header("location: ../login.php");
-    }
-    
+    include("session_start.php");
     include("../connection.php"); // lidhja me databaze
 
     if($_POST){
-        //print_r($_POST);
         $result= $database->query("select * from webuser"); // kontrollojme nese emaili ekziston ne databaze
         $name=$_POST['name'];
         $nic=$_POST['nic'];
@@ -51,8 +41,7 @@ session_start();
                 $sql2="insert into webuser values('$email','d')";
                 $database->query($sql1);
                 $database->query($sql2);
-                //echo $sql1;
-                //echo $sql2;
+
                 $error= '4';
                 
             }
@@ -60,7 +49,6 @@ session_start();
             $error='2';
         } 
     }else{
-        //header('location: signup.php');
         $error='3';
     }
     header("location: doctors.php?action=add&error=".$error);

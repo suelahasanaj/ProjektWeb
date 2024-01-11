@@ -20,18 +20,8 @@
 </head>
 <body>
     <?php
-    session_start();
-
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
-            header("location: ../login.php");
-        }
-    }else{
-        header("location: ../login.php");
-    }
-
+    include("session_start.php");
     include("../connection.php");
-    
     ?>
 
     <div class="container">
@@ -68,19 +58,7 @@
                     <td width="10%">
                         <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                     </td>
-
-
                 </tr>
-               
-                <!-- <tr>
-                    <td colspan="4" >
-                        <div style="display: flex;margin-top: 40px;">
-                        <div class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49);margin-top: 5px;">Schedule a Session</div>
-                        <a href="?action=add-session&id=none&error=0" class="non-style-link"><button  class="login-btn btn-primary btn button-icon"  style="margin-left:25px;background-image: url('../img/icons/add.svg');">Add a Session</font></button>
-                        </a>
-                        </div>
-                    </td>
-                </tr> -->
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;" >
                     
@@ -93,8 +71,7 @@
                         <center>
                         <table class="filter-container" border="0" >
                         <tr>
-                           <td width="10%">
-
+                           <td width="8%">
                            </td> 
                         <td width="5%" style="text-align: center;">
                         Data:
@@ -127,7 +104,7 @@
                         </select>
                     </td>
                     <td width="12%">
-                        <input type="submit"  name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
+                        <input type="submit"  name="filter" value=" Filtro" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
                         </form>
                     </td>
                     </tr>
@@ -138,7 +115,6 @@
                 
                 <?php
                     if($_POST){
-                        //print_r($_POST);
                         $sqlpt1="";
                         if(!empty($_POST["schedule_date"])){
                             $schedule_date=$_POST["schedule_date"];
@@ -146,12 +122,10 @@
                         }
 
                         $sqlpt2="";
-                        if(!empty($_POST["doctor_id"])){
-                            $doctor=$_POST["doctor_id"];
-                            $sqlpt2=" doctor.doctor_id=$doctor ";
+                        if(!empty($_POST["doctor_name"])){
+                            $doctor=$_POST["doctor_name"];
+                            $sqlpt2=" doctor.doctor_name=$doctor ";
                         }
-                        //echo $sqlpt2;
-                        //echo $sqlpt1;
                         $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id";
                         $sqllist=array($sqlpt1,$sqlpt2);
                         $sqlkeywords=array(" where "," and ");
@@ -163,8 +137,6 @@
                                 $key2++;
                             };
                         };
-                        //echo $sqlmain;
-                        //
                     }else{
                         $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  order by schedule.schedule_date desc";
 

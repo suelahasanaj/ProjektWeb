@@ -20,17 +20,7 @@
 </head>
 <body>
     <?php
-    session_start();
-
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
-            header("location: ../login.php");
-        }
-
-    }else{
-        header("location: ../login.php");
-    }
-    
+    include("session_start.php");
     include("../connection.php");
     ?>
 
@@ -64,7 +54,6 @@
 
                             echo ' </datalist>';
 ?>
-                            
                        
                             <input type="Submit" value="Kërko" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                         
@@ -112,13 +101,8 @@
                         $sqlmain= "select * from doctor where doctor_email='$keyword' or doctor_name='$keyword' or doctor_name like '$keyword%' or doctor_name like '%$keyword' or doctor_name like '%$keyword%'";
                     }else{
                         $sqlmain= "select * from doctor order by doctor_id desc";
-
                     }
-
-
-
-                ?>
-                  
+                ?>                 
                 <tr>
                    <td colspan="4">
                        <center>
