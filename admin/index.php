@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="../css/animations.css">  
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
+    
+    <title>Sektori Informues</title>
         
-    <title_of_schedule>Grafika Informative</title_of_schedule>
     <style>
         .dashbord-tables{
             animation: transitionIn-Y-over 0.5s;
@@ -144,7 +145,7 @@
                                                     <?php    echo $appointmentrow ->num_rows  ?>
                                                 </div><br>
                                                 <div class="h3-dashboard" >
-                                                    Rezervim i ri &nbsp;&nbsp;
+                                                    Rezervim i ri &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                         </div>
                                                 <div class="btn-icon-back dashboard-icons" style="margin-left: 0px;background-image: url('../img/icons/book-hover.svg');"></div>
@@ -309,7 +310,7 @@
                                                 </th>
                                                 
                                                 <th class="table-headin">
-                                                    Doctor
+                                                    Doktori
                                                 </th>
                                                 <th class="table-headin">
                                                     

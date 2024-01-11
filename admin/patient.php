@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Pacientë</title>
+    <title>Sektori i Pacientëve</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -67,7 +67,7 @@
 ?>
                             
                        
-                            <input type="button" value="Kërko" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
+                            <input type="Submit" value="Kërko" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                         
                         </form>
                         

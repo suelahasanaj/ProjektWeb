@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title_of_schedule>Skedulim</title_of_schedule>
+    <title>Sektori i Skedulimeve</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -188,7 +188,7 @@
                                 </th>
                                 
                                 <th class="table-headin">
-                                    Doctor
+                                    Doktori
                                 </th>
                                 <th class="table-headin">
                                     

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title>Doktorë</title>
+    <title>Sektori i Doktorëve</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -553,7 +553,7 @@
                                     <tr>
                                         <td>
                                             <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Ndrysho detajet e doktorit.</p>
-                                        ID e doktorit : '.$id.' (Auto Generated)<br><br>
+                                        ID e Doktorit : '.$id.' (E gjeneruar automatikisht)<br><br>
                                         </td>
                                     </tr>
                                     <tr>
@@ -604,7 +604,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="spec" class="form-label">Zgjidh specializimin: (Current'.$spcil_name.')</label>
+                                            <label for="spec" class="form-label">Zgjidh specializimin: (Aktuale: '.$spcil_name.')</label>
                                             
                                         </td>
                                     </tr>

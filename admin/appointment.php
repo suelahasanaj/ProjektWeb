@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
-    <title_of_schedule>Takimet</title_of_schedule>
+    <title>Sektori i Takimeve</title>
     <style>
         .popup{
             animation: transitionIn-Y-bottom 0.5s;
@@ -198,7 +198,7 @@
                                     
                                     </th>
                                 
-                                <th class="table-headin" style="font-size:10px">
+                                <th class="table-headin" >
                                     
                                     Data dhe ora e sesionit
                                     

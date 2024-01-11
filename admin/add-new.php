@@ -48,7 +48,7 @@ session_start();
                 $error='1';
             }else{
                 $sql1="insert into doctor(doctor_email,doctor_name,doctor_password,doctor_nic,doctor_phonenumber,specialty) values('$email','$name','$password','$nic','$tele',$spec);";
-                $sql2="insert into webuser values('$email','doctor')";
+                $sql2="insert into webuser values('$email','d')";
                 $database->query($sql1);
                 $database->query($sql2);
                 //echo $sql1;

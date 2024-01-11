@@ -541,7 +541,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <label for="spec" class="form-label">Zgjidh specialitetin: (Current' . $spcil_name . ')</label>
+                                            <label for="spec" class="form-label">Zgjidh specialitetin: (Aktuale: ' . $spcil_name . ')</label>
                                             
                                         </td>
                                     </tr>
