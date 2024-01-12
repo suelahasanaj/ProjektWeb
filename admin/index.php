@@ -393,6 +393,8 @@ include("session_start.php");
         </div>
     </div>
 
-
+    <?php
+include("../footer.html")
+?>
 </body>
 </html>
