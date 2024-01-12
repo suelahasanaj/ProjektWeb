@@ -46,8 +46,18 @@
     }else{
         $error='3';
     }
+    session_start();
+    $usertype = $_SESSION['usertype'];
+        
+        
+        if ($usertype=="a"){
+            $location = "doctors.php?action=edit&error=".$error."&id=".$id;
+        }
+        elseif($usertype == "d" ){
+            $location = "../doctor/settings.php?action=edit&error=".$error."&id=".$id;
+        }
 
-    header("location: doctors.php?action=edit&error=".$error."&id=".$id);
+        header("location: {$location}");
     ?>
 </body>
 </html>

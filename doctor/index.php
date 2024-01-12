@@ -28,21 +28,7 @@
 </head>
 <body>
     <?php
-
-    session_start();
-
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='d'){
-            header("location: ../login.php");
-        }else{
-            $useremail=$_SESSION["user"];
-        }
-
-    }else{
-        header("location: ../login.php");
-    }
-    
-
+    include("session-start.php");
     //import database
     include("../connection.php");
     $userrow = $database->query("select * from doctor where doctor_email='$useremail'");
