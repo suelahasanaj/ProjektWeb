@@ -104,7 +104,7 @@
                         </select>
                     </td>
                     <td width="12%">
-                        <input type="submit"  name="filter" value=" Filtro" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
+                        <input type="Submit"  name="filter" value=" Filtro" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
                         </form>
                     </td>
                     </tr>
@@ -121,12 +121,13 @@
                             $sqlpt1=" schedule.schedule_date='$schedule_date' ";
                         }
 
+                        // filter appointments by doctor name and show only those appointments that include the name of the doctor entered by user in the filter form otherwise show all appointments
                         $sqlpt2="";
-                        if(!empty($_POST["doctor_name"])){
-                            $doctor=$_POST["doctor_name"];
-                            $sqlpt2=" doctor.doctor_name=$doctor ";
+                        if(!empty($_POST["doctor"])){
+                            $doctor=$_POST["doctor"];
+                            $sqlpt2=" doctor.doctor_id='$doctor' ";
                         }
-                        $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id";
+                        $sqlmain= "select appointment.appointment_id,schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,patient.patient_name,schedule.schedule_date,schedule.schedule_time,appointment.appointment_number,appointment.appointment_date from schedule inner join appointment on schedule.schedule_id=appointment.schedule_id inner join patient on patient.patient_id=appointment.pacient_id inner join doctor on schedule.doctor_id=doctor.doctor_id  ";
                         $sqllist=array($sqlpt1,$sqlpt2);
                         $sqlkeywords=array(" where "," and ");
                         $key2=0;
@@ -301,7 +302,7 @@
 }
     ?>
     </div>
-    <?php
+ <?php
 include("../footer.html")
 ?>
 </body>
