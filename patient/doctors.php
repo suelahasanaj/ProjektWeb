@@ -24,19 +24,7 @@
 <body>
     <?php
 
-    session_start();
-
-    if (isset($_SESSION["user"])) {
-        if (($_SESSION["user"]) == "" or $_SESSION['usertype'] != 'p') {
-            header("location: ../login.php");
-        } else {
-            $useremail = $_SESSION["user"];
-        }
-    } else {
-        header("location: ../login.php");
-    }
-
-
+    include("session-start.php");
     include("../connection.php");
     $userrow = $database->query("select * from patient where patient_email='$useremail'");
     $userfetch = $userrow->fetch_assoc();
@@ -152,7 +140,7 @@
                 </td>
                 <td width="15%">
                     <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                        Data e Sotme
+                        Data Sot
                     </p>
                     <p class="heading-sub12" style="padding: 0;margin: 0;">
                         <?php
@@ -285,28 +273,7 @@
 
         $id = $_GET["id"];
         $action = $_GET["action"];
-        if ($action == 'drop') {
-            $nameget = $_GET["name"];
-            echo '
-            <div id="popup1" class="overlay">
-                    <div class="popup">
-                    <center>
-                        <h2>Je i sigurt?</h2>
-                        <a class="close" href="doctors.php">&times;</a>
-                        <div class="content">
-                            Ti do të fshish këtë të dhënë<br>(' . substr($nameget, 0, 40) . ').
-                            
-                        </div>
-                        <div style="display: flex;justify-content: center;">
-                        <a href="delete-doctor.php?id=' . $id . '" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Po&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
-                        <a href="doctors.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;Jo&nbsp;&nbsp;</font></button></a>
-
-                        </div>
-                    </center>
-            </div>
-            </div>
-            ';
-        } elseif ($action == 'view') {
+         if ($action == 'view') {
             $sqlmain = "SELECT * FROM doctor WHERE doctor_id=?";
             $stmt = $database->prepare($sqlmain);
             $stmt->bind_param("i", $id);
@@ -440,197 +407,8 @@
             </div>
             ';
         
-    } elseif ($action == 'edit') {
-        $sqlmain = "select * from doctor where doctor_id=?";
-        $stmt = $database->prepare($sqlmain);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-
-        $name = $row["doctor_name"];
-        $email = $row["doctor_email"];
-        $spe = $row["specialty"];
-
-        $sqlmain = "select specialty_name from specialties where id='?";
-        $stmt = $database->prepare($sqlmain);
-        $stmt->bind_param("s", $spe);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        $spcil_array = $spcil_res->fetch_assoc();
-        $spcil_name = $spcil_array["specialty_name"];
-        $nic = $row['doctor_nic'];
-        $tele = $row['doctor_phonenumber'];
-
-        $error_1 = $_GET["error"];
-        $errorlist = array(
-            '1' => '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Tashmë keni një llogari për këtë adresë emaili.</label>',
-            '2' => '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;">Gabim në konformimin e fjalëkalimit! Rikonformo fjalëkalimin</label>',
-            '3' => '<label for="promter" class="form-label" style="color:rgb(255, 62, 62);text-align:center;"></label>',
-            '4' => "",
-            '0' => '',
-
-        );
-
-        if ($error_1 != '4') {
-            echo '
-                    <div id="popup1" class="overlay">
-                            <div class="popup">
-                            <center>
-                            
-                                <a class="close" href="doctors.php">&times;</a> 
-                                <div style="display: flex;justify-content: center;">
-                                <div class="abc">
-                                <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
-                                <tr>
-                                        <td class="label-td" colspan="2">' .
-                $errorlist[$error_1]
-                . '</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Ndrysho Detajet e Doktorit.</p>
-                                        ID e Doktorit: ' . $id . ' (E Gjeneruar Automatikisht)<br><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <form action="edit-doc.php" method="POST" class="add-new-form">
-                                            <label for="Email" class="form-label">Email-i: </label>
-                                            <input type="hidden" value="' . $id . '" name="id00">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                        <input type="email" name="email" class="input-text" placeholder="Adresa e Email-it" value="' . $email . '" required><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        
-                                        <td class="label-td" colspan="2">
-                                            <label for="name" class="form-label">Emri: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="text" name="name" class="input-text" placeholder="Emri i Mjekut" value="' . $name . '" required><br>
-                                        </td>
-                                        
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="nic" class="form-label">NIC: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="text" name="nic" class="input-text" placeholder="Numri NIC" value="' . $nic . '" required><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="Tele" class="form-label">Nr. Kontakti: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="tel" name="Tele" class="input-text" placeholder="Numër Telefoni" value="' . $tele . '" required><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="spec" class="form-label">Zgjidh specialitetin: (Aktuale: ' . $spcil_name . ')</label>
-                                            
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <select name="spec" id="" class="box">';
-
-
-            $list11 = $database->query("select  * from  specialties;");
-
-            for ($y = 0; $y < $list11->num_rows; $y++) {
-                $row00 = $list11->fetch_assoc();
-                $sn = $row00["specialty_name"];
-                $id00 = $row00["id"];
-                echo "<option value=" . $id00 . ">$sn</option><br/>";
-            };
-
-
-
-
-            echo     '       </select><br><br>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="password" class="form-label">Fjalëkalimi: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="password" name="password" class="input-text" placeholder="Zgjidh një fjalëkalim" required><br>
-                                        </td>
-                                    </tr><tr>
-                                        <td class="label-td" colspan="2">
-                                            <label for="cpassword" class="form-label">Konfirmo Fjalëkalimin: </label>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="label-td" colspan="2">
-                                            <input type="password" name="cpassword" class="input-text" placeholder="Konfirmo Fjalëkalimin:" required><br>
-                                        </td>
-                                    </tr>
-                                    
-                        
-                                    <tr>
-                                        <td colspan="2">
-                                            <input type="reset" value="Rivendos" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        
-                                            <input type="submit" value="Ruaj" class="login-btn btn-primary btn">
-                                        </td>
-                        
-                                    </tr>
-                                
-                                    </form>
-                                    </tr>
-                                </table>
-                                </div>
-                                </div>
-                            </center>
-                            <br><br>
-                    </div>
-                    </div>
-                    ';
-        } else {
-            echo '
-                <div id="popup1" class="overlay">
-                        <div class="popup">
-                        <center>
-                        <br><br><br><br>
-                            <h2>U Ndryshua me Sukses!</h2>
-                            <a class="close" href="doctors.php">&times;</a>
-                            <div class="content">
-                                
-                                
-                            </div>
-                            <div style="display: flex;justify-content: center;">
-                            
-                            <a href="doctors.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;OK&nbsp;&nbsp;</font></button></a>
-
-                            </div>
-                            <br><br>
-                        </center>
-                </div>
-                </div>
-     ';
-        };
-    };
-}
-
+    } 
+};
     ?>
     </div>
     <?php

@@ -235,7 +235,7 @@
                         <h2>A je i sigurt?</h2>
                         <a class="close" href="settings.php">&times;</a>
                         <div class="content">
-                        Ju dëshironi ta fshini këtë rekord<br>('.substr($nameget,0,40).').
+                        Ju dëshironi ta fshini llogarinë tuaj<br>('.substr($nameget,0,40).').
                             
                         </div>
                         <div style="display: flex;justify-content: center;">

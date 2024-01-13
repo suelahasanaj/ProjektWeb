@@ -24,20 +24,7 @@
 <body>
     <?php
 
-
-    session_start();
-
-    if (isset($_SESSION["user"])) {
-        if (($_SESSION["user"]) == "" or $_SESSION['usertype'] != 'p') {
-            header("location: ../login.php");
-        } else {
-            $useremail = $_SESSION["user"];
-        }
-    } else {
-        header("location: ../login.php");
-    }
-
-
+    include("session-start.php");
     include("../connection.php");
     $sqlmain = "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
@@ -58,18 +45,11 @@
 
     if ($_POST) {
         //print_r($_POST);
-
-
-
         if (!empty($_POST["sheduledate"])) {
             $sheduledate = $_POST["sheduledate"];
             $sqlmain .= " and schedule.schedule_date='$sheduledate' ";
         };
-
-
-
         //echo $sqlmain;
-
     }
 
     $sqlmain .= "order by appointment.appointment_date  asc";
@@ -179,16 +159,6 @@
 
 
             </tr>
-
-            <!-- <tr>
-                    <td colspan="4" >
-                        <div style="display: flex;margin-top: 40px;">
-                        <div class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49);margin-top: 5px;">Schedule a Session</div>
-                        <a href="?action=add-session&id=none&error=0" class="non-style-link"><button  class="login-btn btn-primary btn button-icon"  style="margin-left:25px;background-image: url('../img/icons/add.svg');">Add a Session</font></button>
-                        </a>
-                        </div>
-                    </td>
-                </tr> -->
             <tr>
                 <td colspan="4" style="padding-top:10px;width: 100%;">
 
@@ -310,48 +280,6 @@
                                                 </td>';
                                             }
                                             echo "</tr>";
-
-                                            // for ( $x=0; $x<$result->num_rows;$x++){
-                                            //     $row=$result->fetch_assoc();
-                                            //     $appointment_id=$row["appointment_id"];
-                                            //     $schedule_id=$row["schedule_id"];
-                                            //     $title=$row["title"];
-                                            //     $doctor_name=$row["doctor_name"];
-                                            //     $schedule_date=$row["schedule_date"];
-                                            //     $schedule_time=$row["schedule_time"];
-                                            //     $patient_name=$row["patient_name"];
-                                            //     
-                                            //     
-                                            //     echo '<tr >
-                                            //         <td style="font-weight:600;"> &nbsp;'.
-
-                                            //         substr($patient_name,0,25)
-                                            //         .'</td >
-                                            //         <td style="text-align:center;font-size:23px;font-weight:500; color: var(--btnnicetext);">
-                                            //         '.$appointment_number.'
-
-                                            //         </td>
-                                            //         <td>
-                                            //         '.substr($title,0,15).'
-                                            //         </td>
-                                            //         <td style="text-align:center;;">
-                                            //             '.substr($schedule_date,0,10).' @'.substr($schedule_time,0,5).'
-                                            //         </td>
-
-                                            //         <td style="text-align:center;">
-                                            //             '.$appointment_date.'
-                                            //         </td>
-
-                                            //         <td>
-                                            //         <div style="display:flex;justify-content: center;">
-
-                                            //         <!--<a href="?action=view&id='.$appointment_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
-                                            //        &nbsp;&nbsp;&nbsp;-->
-                                            //        <a href="?action=drop&id='.$appointment_id.'&name='.$patient_name.'&session='.$title.'&appointment_number='.$appointment_number.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel</font></button></a>
-                                            //        &nbsp;&nbsp;&nbsp;</div>
-                                            //         </td>
-                                            //     </tr>';
-
                                         }
                                     }
 

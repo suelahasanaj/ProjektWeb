@@ -302,8 +302,6 @@
                                                         <td style="text-align:center;">
                                                             '.substr($schedule_time,0,5).'
                                                         </td>
-
-                
                                                        
                                                     </tr>';
                                                     
@@ -317,13 +315,6 @@
                                         </table>
                                         </div>
                                         </center>
-
-
-
-
-
-
-
                                 </td>
                             </tr>
                         </table>

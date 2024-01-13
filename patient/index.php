@@ -25,22 +25,7 @@
 </head>
 <body>
     <?php
-
-
-    session_start();
-
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
-            header("location: ../login.php");
-        }else{
-            $useremail=$_SESSION["user"];
-        }
-
-    }else{
-        header("location: ../login.php");
-    }
-    
-
+    include("session-start.php");
     include("../connection.php");
 
     $sqlmain= "select * from patient where patient_email=?";
@@ -269,19 +254,8 @@
                                             </tr>
                                         </table>
                                     </center>
-
-
-
-
-
-
-
-
                                 </td>
                                 <td>
-
-
-                            
                                     <p style="font-size: 20px;font-weight:600;padding-left: 40px;" class="anime">Konsultat e Ardhshme</p>
                                     <center>
                                         <div class="abc scroll" style="height: 250px;padding: 0;margin: 0;">
@@ -374,12 +348,6 @@
                                         </table>
                                         </div>
                                         </center>
-
-
-
-
-
-
 
                                 </td>
                             </tr>

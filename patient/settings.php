@@ -28,28 +28,9 @@
 <body>
     <?php
 
-
-    session_start();
-
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
-            header("location: ../login.php");
-        }else{
-            $useremail=$_SESSION["user"];
-        }
-
-    }else{
-        header("location: ../login.php");
-    }
-    
-
+    include("session-start.php");
     include("../connection.php");
-    // $sqlmain= "select * from patient where patient_email=?";
-    // $stmt = $database->prepare($sqlmain);
-    // $stmt->bind_param("s",$useremail);
-    // $stmt->execute();
-    // $result = $stmt->get_result();
-    // $userfetch=$userrow->fetch_assoc();
+
     $userrow = $database->query("select * from patient where patient_email='$useremail'");
     $userfetch = $userrow->fetch_assoc();
     $userid= $userfetch["patient_id"];
@@ -255,7 +236,7 @@
                         </div>
                         <div style="display: flex;justify-content: center;">
                         <a href="delete-account.php?id='.$id.'" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"<font class="tn-in-text">&nbsp;Po&nbsp;</font></button></a>&nbsp;&nbsp;&nbsp;
-                        <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;&nbsp;Jo&nbsp;&nbsp;</font></button></a>
+                        <a href="settings.php" class="non-style-link"><button  class="btn-primary btn"  style="display: flex;justify-content: center;align-items: center;margin:10px;padding:10px;"><font class="tn-in-text">&nbsp;Jo&nbsp;</font></button></a>
 
                         </div>
                     </center>

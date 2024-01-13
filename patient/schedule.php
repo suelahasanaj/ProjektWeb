@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/admin.css">
 
-    <title>Sessions</title>
+    <title>Seancat</title>
     <style>
         .popup {
             animation: transitionIn-Y-bottom 0.5s;
@@ -23,20 +23,7 @@
 
 <body>
     <?php
-
-    session_start();
-
-    if (isset($_SESSION["user"])) {
-        if (($_SESSION["user"]) == "" or $_SESSION['usertype'] != 'p') {
-            header("location: ../login.php");
-        } else {
-            $useremail = $_SESSION["user"];
-        }
-    } else {
-        header("location: ../login.php");
-    }
-
-
+    include("session-start.php");
     include("../connection.php");
     $sqlmain = "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
@@ -79,7 +66,7 @@
                     </td>
                 </tr>
                 <tr class="menu-row">
-                    <td class="menu-btn menu-icon-Kreu ">
+                    <td class="menu-btn menu-icon-home ">
                         <a href="index.php" class="non-style-link-menu ">
                             <div>
                                 <p class="menu-text">Kreu</p>
@@ -127,30 +114,35 @@
     </div>
     <?php
 
-    $sqlmain = "select * from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id where schedule.schedule_date>='$today'  order by schedule.schedule_date asc";
-    $sqlpt1 = "";
+    $sqlmain = "SELECT * FROM schedule
+                INNER JOIN doctor ON schedule.doctor_id = doctor.doctor_id
+                WHERE schedule.schedule_date >= '$today'";
+
     $insertkey = "";
     $q = '';
     $searchtype = "All";
-    if ($_POST) {
-        //print_r($_POST);
 
-        if (!empty($_POST["search"])) {
+    if ($_POST && !empty($_POST["search"])) {
+        $keyword = $_POST["search"];
+        $keyword = $database->real_escape_string($keyword); // Sanitize user input
 
-            $keyword = $_POST["search"];
-            $sqlmain = "select * from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id where schedule.schedule_date>='$today' and (doctor.doctor_name='$keyword' or doctor.doctor_name like '$keyword%' or doctor.doctor_name like '%$keyword' or doctor.doctor_name like '%$keyword%' or schedule.title_of_schedule='$keyword' or schedule.title_of_schedule like '$keyword%' or schedule.title_of_schedule like '%$keyword' or schedule.title_of_schedule like '%$keyword%' or schedule.schedule_date like '$keyword%' or schedule.schedule_date like '%$keyword' or schedule.schedule_date like '%$keyword%' or schedule.schedule_date='$keyword' )  order by schedule.schedule_date asc";
-            //echo $sqlmain;
-            $insertkey = $keyword;
-            $searchtype = "Search Result : ";
-            $q = '"';
-        }
+        $sqlmain .= " AND (
+            doctor.doctor_name LIKE '%$keyword%' OR
+            schedule.title_of_schedule LIKE '%$keyword%' OR
+            schedule.schedule_date LIKE '%$keyword%'
+        )";
+
+        $insertkey = $keyword;
+        $searchtype = "Search Result: ";
+        $q = '"';
     }
 
+    $sqlmain .= " ORDER BY schedule.schedule_date ASC";
 
-    $result = $database->query($sqlmain)
+    $result = $database->query($sqlmain);
 
+?>
 
-    ?>
 
     <div class="dash-body">
         <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
@@ -201,16 +193,11 @@
                 </td>
                 <td width="15%">
                     <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                        Today's Date
+                        Data Sot
                     </p>
                     <p class="heading-sub12" style="padding: 0;margin: 0;">
                         <?php
-
-
                         echo $today;
-
-
-
                         ?>
                     </p>
                 </td>
@@ -224,7 +211,7 @@
 
             <tr>
                 <td colspan="4" style="padding-top:10px;width: 100%;">
-                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)"><?php echo $searchtype . " Seancat" . "(" . $result->num_rows . ")"; ?> </p>
+                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)"><?php echo " Seancat" . "(" . $result->num_rows . ")"; ?> </p>
                     <p class="heading-main12" style="margin-left: 45px;font-size:22px;color:rgb(49, 49, 49)"><?php echo $q . $insertkey . $q; ?> </p>
                 </td>
 
@@ -300,29 +287,6 @@
                                             </td>';
                                             }
                                             echo "</tr>";
-
-
-                                            // echo '<tr>
-                                            //     <td> &nbsp;'.
-                                            //     substr($title,0,30)
-                                            //     .'</td>
-
-                                            //     <td style="text-align:center;">
-                                            //         '.substr($schedule_date,0,10).' '.substr($schedule_time,0,5).'
-                                            //     </td>
-                                            //     <td style="text-align:center;">
-                                            //         '.$number_of_patients.'
-                                            //     </td>
-
-                                            //     <td>
-                                            //     <div style="display:flex;justify-content: center;">
-
-                                            //     <a href="?action=view&id='.$schedule_id.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-view"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">View</font></button></a>
-                                            //    &nbsp;&nbsp;&nbsp;
-                                            //    <a href="?action=drop&id='.$schedule_id.'&name='.$title.'" class="non-style-link"><button  class="btn-primary-soft btn button-icon btn-delete"  style="padding-left: 40px;padding-top: 12px;padding-bottom: 12px;margin-top: 10px;"><font class="tn-in-text">Cancel Session</font></button></a>
-                                            //     </div>
-                                            //     </td>
-                                            // </tr>';
 
                                         }
                                     }

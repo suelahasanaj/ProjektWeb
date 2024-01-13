@@ -1,19 +1,6 @@
 <?php
 
-    session_start();
-
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='p'){
-            header("location: ../login.php");
-        }else{
-            $useremail=$_SESSION["user"];
-        }
-
-    }else{
-        header("location: ../login.php");
-    }
-    
-
+    include("session-start.php");
     include("../connection.php");
     $sqlmain= "select * from patient where patient_email=?";
     $stmt = $database->prepare($sqlmain);
