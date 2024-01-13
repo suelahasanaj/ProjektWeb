@@ -9,7 +9,7 @@
         
         
         if ($usertype=="a"){
-            $location = "appointment.php";
+            $location = "../admin/appointment.php";
         }
         elseif($usertype == "d" ){
             $location = "../doctor/appointment.php";

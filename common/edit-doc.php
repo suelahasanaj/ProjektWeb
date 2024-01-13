@@ -51,7 +51,7 @@
         
         
         if ($usertype=="a"){
-            $location = "doctors.php?action=edit&error=".$error."&id=".$id;
+            $location = "../admin/doctors.php?action=edit&error=".$error."&id=".$id;
         }
         elseif($usertype == "d" ){
             $location = "../doctor/settings.php?action=edit&error=".$error."&id=".$id;

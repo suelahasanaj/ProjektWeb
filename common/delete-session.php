@@ -7,7 +7,7 @@
         $sql= $database->query("delete from schedule where schedule_id='$id';");
         $usertype = $_SESSION['usertype'];
         if ($usertype=="a"){
-            $location = "schedule.php";
+            $location = "../admin/schedule.php";
         }
         elseif($usertype == "d" ){
             $location = "../doctor/schedule.php";
