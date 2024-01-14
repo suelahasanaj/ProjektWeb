@@ -1,0 +1,28 @@
+.dashbord-tables,.doctor-heade{
+    animation: transitionIn-Y-over 0.5s;
+}
+.filter-container{
+    animation: transitionIn-Y-bottom  0.5s;
+}
+.sub-table,#anim{
+    animation: transitionIn-Y-bottom 0.5s;
+}
+.doctor-heade{
+    animation: transitionIn-Y-over 0.5s;
+}
+.popup {
+    animation: transitionIn-Y-bottom 0.5s;
+}
+
+.sub-table {
+    animation: transitionIn-Y-bottom 0.5s;
+}
+.dashbord-tables{
+    animation: transitionIn-Y-over 0.5s;
+}
+.filter-container{
+    animation: transitionIn-X  0.5s;
+}
+.sub-table{
+    animation: transitionIn-Y-bottom 0.5s;
+}

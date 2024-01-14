@@ -1,25 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/animations.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/admin.css">
-
-    <title>Seancat e Skeduluara</title>
-    <style>
-        .popup {
-            animation: transitionIn-Y-bottom 0.5s;
-        }
-
-        .sub-table {
-            animation: transitionIn-Y-bottom 0.5s;
-        }
-    </style>
-</head>
+<?php
+include("header.html");
+?>
 
 <body>
     <?php
@@ -33,140 +16,140 @@
     //echo $userid;
     ?>
     <div class="container">
-    <?php
-         include("menu.php");
+        <?php
+        include("menu.php");
         ?>
-    <div class="dash-body">
-        <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
-            <tr>
-                <td width="13%">
-                    <a href="schedule.php"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
-                            <font class="tn-in-text">Kthehu</font>
-                        </button></a>
-                </td>
-                <td>
-                    <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Seancat e Skeduluara</p>
+        <div class="dash-body">
+            <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;margin-top:25px; ">
+                <tr>
+                    <td width="13%">
+                        <a href="schedule.php"><button class="login-btn btn-primary-soft btn btn-icon-back" style="padding-top:11px;padding-bottom:11px;margin-left:20px;width:125px">
+                                <font class="tn-in-text">Kthehu</font>
+                            </button></a>
+                    </td>
+                    <td>
+                        <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Seancat e Skeduluara</p>
 
-                </td>
-                <td width="15%">
-                    <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
-                        Data Sot
-                    </p>
-                    <p class="heading-sub12" style="padding: 0;margin: 0;">
-                        <?php
+                    </td>
+                    <td width="15%">
+                        <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
+                            Data Sot
+                        </p>
+                        <p class="heading-sub12" style="padding: 0;margin: 0;">
+                            <?php
 
-                        date_default_timezone_set('Europe/Tirane');
+                            date_default_timezone_set('Europe/Tirane');
 
-                        $today = date('Y-m-d');
-                        echo $today;
+                            $today = date('Y-m-d');
+                            echo $today;
 
-                        $list110 = $database->query("select  * from  schedule where doctor_id=$userid;");
+                            $list110 = $database->query("select  * from  schedule where doctor_id=$userid;");
 
-                        ?>
-                    </p>
-                </td>
-                <td width="10%">
-                    <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
-                </td>
-
-
-            </tr>
+                            ?>
+                        </p>
+                    </td>
+                    <td width="10%">
+                        <button class="btn-label" style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
+                    </td>
 
 
-            <tr>
-                <td colspan="4" style="padding-top:10px;width: 100%;">
+                </tr>
 
-                    <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Seancat e Skeduluara (<?php echo $list110->num_rows; ?>) </p>
-                </td>
 
-            </tr>
+                <tr>
+                    <td colspan="4" style="padding-top:10px;width: 100%;">
 
-            <tr>
-                <td colspan="4" style="padding-top:0px;width: 100%;">
-                    <center>
-                        <table class="filter-container" border="0">
-                            <tr>
-                                <td width="10%">
+                        <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">Seancat e Skeduluara (<?php echo $list110->num_rows; ?>) </p>
+                    </td>
 
-                                </td>
-                                <td width="5%" style="text-align: center;">
-                                    Data:
-                                </td>
-                                <td width="30%">
-                                    <form action="" method="post">
+                </tr>
 
-                                        <input type="date" name="sheduledate" id="date" class="input-text filter-container-items" style="margin: 0;width: 95%;">
+                <tr>
+                    <td colspan="4" style="padding-top:0px;width: 100%;">
+                        <center>
+                            <table class="filter-container" border="0">
+                                <tr>
+                                    <td width="10%">
 
-                                </td>
+                                    </td>
+                                    <td width="5%" style="text-align: center;">
+                                        Data:
+                                    </td>
+                                    <td width="30%">
+                                        <form action="" method="post">
 
-                                <td width="12%">
-                                    <input type="submit" name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter" style="padding: 15px; margin :0;width:100%">
-                                    </form>
-                                </td>
+                                            <input type="date" name="sheduledate" id="date" class="input-text filter-container-items" style="margin: 0;width: 95%;">
 
-                            </tr>
-                        </table>
+                                    </td>
 
-                    </center>
-                </td>
+                                    <td width="12%">
+                                        <input type="submit" name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter" style="padding: 15px; margin :0;width:100%">
+                                        </form>
+                                    </td>
 
-            </tr>
+                                </tr>
+                            </table>
 
-            <?php
+                        </center>
+                    </td>
 
-            $sqlmain = "select schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,schedule.schedule_date,schedule.schedule_time,schedule.number_of_patients from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id where doctor.doctor_id=$userid ";
-            if ($_POST) {
-                //print_r($_POST);
-                $sqlpt1 = "";
-                if (!empty($_POST["sheduledate"])) {
-                    $sheduledate = $_POST["sheduledate"];
-                    $sqlmain .= " and schedule.schedule_date='$sheduledate' ";
+                </tr>
+
+                <?php
+
+                $sqlmain = "select schedule.schedule_id,schedule.title_of_schedule,doctor.doctor_name,schedule.schedule_date,schedule.schedule_time,schedule.number_of_patients from schedule inner join doctor on schedule.doctor_id=doctor.doctor_id where doctor.doctor_id=$userid ";
+                if ($_POST) {
+                    //print_r($_POST);
+                    $sqlpt1 = "";
+                    if (!empty($_POST["sheduledate"])) {
+                        $sheduledate = $_POST["sheduledate"];
+                        $sqlmain .= " and schedule.schedule_date='$sheduledate' ";
+                    }
                 }
-            }
 
-            ?>
+                ?>
 
-            <tr>
-                <td colspan="4">
-                    <center>
-                        <div class="abc scroll">
-                            <table width="93%" class="sub-table scrolldown" border="0">
-                                <thead>
-                                    <tr>
-                                        <th class="table-headin">
-
-
-                                            Titulli Seancës
-
-                                        </th>
+                <tr>
+                    <td colspan="4">
+                        <center>
+                            <div class="abc scroll">
+                                <table width="93%" class="sub-table scrolldown" border="0">
+                                    <thead>
+                                        <tr>
+                                            <th class="table-headin">
 
 
-                                        <th class="table-headin">
+                                                Titulli Seancës
 
-                                            Data & Ora Seancës
-
-                                        </th>
-                                        <th class="table-headin">
-
-                                            Numri maksimal që mund të rezervohet
-
-                                        </th>
-
-                                        <th class="table-headin">
-
-                                            Ngjarjet
-
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php
+                                            </th>
 
 
-                                    $result = $database->query($sqlmain);
+                                            <th class="table-headin">
 
-                                    if ($result->num_rows == 0) {
-                                        echo '<tr>
+                                                Data & Ora Seancës
+
+                                            </th>
+                                            <th class="table-headin">
+
+                                                Numri maksimal që mund të rezervohet
+
+                                            </th>
+
+                                            <th class="table-headin">
+
+                                                Ngjarjet
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <?php
+
+
+                                        $result = $database->query($sqlmain);
+
+                                        if ($result->num_rows == 0) {
+                                            echo '<tr>
                                     <td colspan="4">
                                     <br><br><br><br>
                                     <center>
@@ -180,19 +163,19 @@
                                     <br><br><br><br>
                                     </td>
                                     </tr>';
-                                    } else {
-                                        for ($x = 0; $x < $result->num_rows; $x++) {
-                                            $row = $result->fetch_assoc();
-                                            $schedule_id = $row["schedule_id"];
-                                            $title_of_schedule = $row["title_of_schedule"];
-                                            $doctor_name = $row["doctor_name"];
-                                            $schedule_date = $row["schedule_date"];
-                                            $schedule_time = $row["schedule_time"];
-                                            $number_of_patients = $row["number_of_patients"];
-                                            echo '<tr>
+                                        } else {
+                                            for ($x = 0; $x < $result->num_rows; $x++) {
+                                                $row = $result->fetch_assoc();
+                                                $schedule_id = $row["schedule_id"];
+                                                $title_of_schedule = $row["title_of_schedule"];
+                                                $doctor_name = $row["doctor_name"];
+                                                $schedule_date = $row["schedule_date"];
+                                                $schedule_time = $row["schedule_time"];
+                                                $number_of_patients = $row["number_of_patients"];
+                                                echo '<tr>
                                         <td> &nbsp;' .
-                                                substr($title_of_schedule, 0, 30)
-                                                . '</td>
+                                                    substr($title_of_schedule, 0, 30)
+                                                    . '</td>
                                         
                                         <td style="text-align:center;">
                                             ' . substr($schedule_date, 0, 10) . ' ' . substr($schedule_time, 0, 5) . '
@@ -210,23 +193,23 @@
                                         </div>
                                         </td>
                                     </tr>';
+                                            }
                                         }
-                                    }
 
-                                    ?>
+                                        ?>
 
-                                </tbody>
+                                    </tbody>
 
-                            </table>
-                        </div>
-                    </center>
-                </td>
-            </tr>
-
+                                </table>
+                            </div>
+                        </center>
+                    </td>
+                </tr>
 
 
-        </table>
-    </div>
+
+            </table>
+        </div>
     </div>
     <?php
 
@@ -433,8 +416,8 @@
     </div>
 
     <?php
-include("../footer.html")
-?>
+    include("../footer.html")
+    ?>
 
 </body>
 
