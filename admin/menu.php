@@ -54,22 +54,22 @@ function addActiveClasses($link)
                 </td>
             </tr>
             <tr class="menu-row">
-                <td class="menu-btn menu-icon-doctor <?php maybeAddActiveClasses("/admin/doctors.php", "menu-icon-dashbord-active") ?>">
+                <td class="menu-btn menu-icon-doctor <?php maybeAddActiveClasses("/admin/doctors.php", "menu-icon-doctors-active") ?>">
                     <a href="doctors.php" class="non-style-link-menu <?php addActiveClasses("/admin/doctors.php") ?>"><div><p class="menu-text">Doktorë</p></a></div>
                 </td>
             </tr>
             <tr class="menu-row" >
-                <td class="menu-btn menu-icon-schedule <?php maybeAddActiveClasses("/admin/schedule.php", "menu-icon-dashbord-active") ?>">
+                <td class="menu-btn menu-icon-schedule <?php maybeAddActiveClasses("/admin/schedule.php", "menu-icon-session-active") ?>">
                     <a href="schedule.php" class="non-style-link-menu <?php addActiveClasses("/admin/schedule.php") ?>"><div><p class="menu-text">Skedulimet</p></div></a>
                 </td>
             </tr>
             <tr class="menu-row">
-                <td class="menu-btn menu-icon-appoinment <?php maybeAddActiveClasses("/admin/appointment.php", "menu-icon-dashbord-active") ?>">
+                <td class="menu-btn menu-icon-appoinment <?php maybeAddActiveClasses("/admin/appointment.php", "menu-icon-appointment-active") ?>">
                     <a href="appointment.php" class="non-style-link-menu <?php addActiveClasses("/admin/appointment.php") ?>"><div><p class="menu-text">Takimet</p></a></div>
                 </td>
             </tr>
             <tr class="menu-row" >
-                <td class="menu-btn menu-icon-patient <?php maybeAddActiveClasses("/admin/patient.php", "menu-icon-dashbord-active") ?>">
+                <td class="menu-btn menu-icon-patient <?php maybeAddActiveClasses("/admin/patient.php", "menu-icon-patient-active") ?>">
                     <a href="patient.php" class="non-style-link-menu <?php addActiveClasses("/admin/patient.php") ?>"><div><p class="menu-text">Pacientë</p></a></div>
                 </td>
             </tr>
