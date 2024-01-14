@@ -54,12 +54,12 @@ function addActiveClasses($link)
                 </td>
             </tr>
             <tr class="menu-row">
-                <td class="menu-btn menu-icon-doctor <?php maybeAddActiveClasses("/admin/doctors.php", "menu-icon-doctors-active") ?>">
+                <td class="menu-btn menu-icon-doctor <?php maybeAddActiveClasses("/admin/doctors.php", "menu-icon-doctor-active") ?>">
                     <a href="doctors.php" class="non-style-link-menu <?php addActiveClasses("/admin/doctors.php") ?>"><div><p class="menu-text">Doktorë</p></a></div>
                 </td>
             </tr>
             <tr class="menu-row" >
-                <td class="menu-btn menu-icon-schedule <?php maybeAddActiveClasses("/admin/schedule.php", "menu-icon-session-active") ?>">
+                <td class="menu-btn menu-icon-schedule <?php maybeAddActiveClasses("/admin/schedule.php", "menu-icon-schedule-active") ?>">
                     <a href="schedule.php" class="non-style-link-menu <?php addActiveClasses("/admin/schedule.php") ?>"><div><p class="menu-text">Skedulimet</p></div></a>
                 </td>
             </tr>
