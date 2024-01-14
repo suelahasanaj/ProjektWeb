@@ -1,29 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/animations.css">  
-    <link rel="stylesheet" href="../css/main.css">  
-    <link rel="stylesheet" href="../css/admin.css">
-    
-    <title>Sektori Informues</title>
-        
-    <style>
-        .dashbord-tables{
-            animation: transitionIn-Y-over 0.5s;
-        }
-        .filter-container{
-            animation: transitionIn-Y-bottom  0.5s;
-        }
-        .sub-table{
-            animation: transitionIn-Y-bottom 0.5s;
-        }
-    </style>
-    
-    
-</head>
+<?php
+    include("header.html");
+?>
 <body>
 <?php
 include("session_start.php");
@@ -32,7 +11,7 @@ include("session_start.php");
 
     <div class="container">
     <?php 
-        include("menu.html");
+        include("menu.php");
         ?>
         <div class="dash-body" style="margin-top: 15px">
             <table border="0" width="100%" style=" border-spacing: 0;margin:0;padding:0;" >
